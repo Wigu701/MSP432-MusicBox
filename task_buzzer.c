@@ -59,8 +59,8 @@ uint8_t BQ_Times[171] = {200, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, 
 
 
 
-uint16_t* songNotes[totalSongs] = {Death_Notes, HCTS_Notes, FGM_Notes, BQ_Notes};
-uint8_t* songTimes[totalSongs] = {Death_Times, HCTS_Times, FGM_Times, BQ_Times};
+uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, BQ_Notes};
+uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, BQ_Times};
 
 /**
  * Initializes buzzer

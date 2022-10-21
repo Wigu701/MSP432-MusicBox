@@ -18,6 +18,7 @@ ORDERED_OBJS += \
 "./task_adc.obj" \
 "./task_buttons.obj" \
 "./task_buzzer.obj" \
+"./task_duet.obj" \
 "./task_lcd_draw.obj" \
 "./task_lcd_driver.obj" \
 "./task_timer_polling.obj" \
@@ -178,8 +179,8 @@ MusicBox.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "bop_it_images.obj" "lcd.obj" "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "task_adc.obj" "task_buttons.obj" "task_buzzer.obj" "task_lcd_draw.obj" "task_lcd_driver.obj" "task_timer_polling.obj" "FreeRTOS\Portable\port.obj" "FreeRTOS\Portable\portasm.obj" "FreeRTOS\croutine.obj" "FreeRTOS\event_groups.obj" "FreeRTOS\heap_4.obj" "FreeRTOS\list.obj" "FreeRTOS\queue.obj" "FreeRTOS\stream_buffer.obj" "FreeRTOS\tasks.obj" "FreeRTOS\timers.obj" 
-	-$(RM) "bop_it_images.d" "lcd.d" "main.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "task_adc.d" "task_buttons.d" "task_buzzer.d" "task_lcd_draw.d" "task_lcd_driver.d" "task_timer_polling.d" "FreeRTOS\Portable\port.d" "FreeRTOS\croutine.d" "FreeRTOS\event_groups.d" "FreeRTOS\heap_4.d" "FreeRTOS\list.d" "FreeRTOS\queue.d" "FreeRTOS\stream_buffer.d" "FreeRTOS\tasks.d" "FreeRTOS\timers.d" 
+	-$(RM) "bop_it_images.obj" "lcd.obj" "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "task_adc.obj" "task_buttons.obj" "task_buzzer.obj" "task_duet.obj" "task_lcd_draw.obj" "task_lcd_driver.obj" "task_timer_polling.obj" "FreeRTOS\Portable\port.obj" "FreeRTOS\Portable\portasm.obj" "FreeRTOS\croutine.obj" "FreeRTOS\event_groups.obj" "FreeRTOS\heap_4.obj" "FreeRTOS\list.obj" "FreeRTOS\queue.obj" "FreeRTOS\stream_buffer.obj" "FreeRTOS\tasks.obj" "FreeRTOS\timers.obj" 
+	-$(RM) "bop_it_images.d" "lcd.d" "main.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "task_adc.d" "task_buttons.d" "task_buzzer.d" "task_duet.d" "task_lcd_draw.d" "task_lcd_driver.d" "task_timer_polling.d" "FreeRTOS\Portable\port.d" "FreeRTOS\croutine.d" "FreeRTOS\event_groups.d" "FreeRTOS\heap_4.d" "FreeRTOS\list.d" "FreeRTOS\queue.d" "FreeRTOS\stream_buffer.d" "FreeRTOS\tasks.d" "FreeRTOS\timers.d" 
 	-$(RM) "FreeRTOS\Portable\portasm.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

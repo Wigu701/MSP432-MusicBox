@@ -17,6 +17,7 @@ C_SRCS += \
 ../task_adc.c \
 ../task_buttons.c \
 ../task_buzzer.c \
+../task_duet.c \
 ../task_lcd_draw.c \
 ../task_lcd_driver.c \
 ../task_timer_polling.c 
@@ -30,6 +31,7 @@ C_DEPS += \
 ./task_adc.d \
 ./task_buttons.d \
 ./task_buzzer.d \
+./task_duet.d \
 ./task_lcd_draw.d \
 ./task_lcd_driver.d \
 ./task_timer_polling.d 
@@ -43,6 +45,7 @@ OBJS += \
 ./task_adc.obj \
 ./task_buttons.obj \
 ./task_buzzer.obj \
+./task_duet.obj \
 ./task_lcd_draw.obj \
 ./task_lcd_driver.obj \
 ./task_timer_polling.obj 
@@ -56,6 +59,7 @@ OBJS__QUOTED += \
 "task_adc.obj" \
 "task_buttons.obj" \
 "task_buzzer.obj" \
+"task_duet.obj" \
 "task_lcd_draw.obj" \
 "task_lcd_driver.obj" \
 "task_timer_polling.obj" 
@@ -69,6 +73,7 @@ C_DEPS__QUOTED += \
 "task_adc.d" \
 "task_buttons.d" \
 "task_buzzer.d" \
+"task_duet.d" \
 "task_lcd_draw.d" \
 "task_lcd_driver.d" \
 "task_timer_polling.d" 
@@ -82,6 +87,7 @@ C_SRCS__QUOTED += \
 "../task_adc.c" \
 "../task_buttons.c" \
 "../task_buzzer.c" \
+"../task_duet.c" \
 "../task_lcd_draw.c" \
 "../task_lcd_driver.c" \
 "../task_timer_polling.c" 
