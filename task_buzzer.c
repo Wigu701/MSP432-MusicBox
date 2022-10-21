@@ -32,6 +32,10 @@ extern volatile int totalSongs = 4;
 #define D7 2349
 #define E7 2637
 
+// Song Format
+// Notes[Size] = {ArrayLength, Notes, Notes, Notes ....}
+// Times[Size] = {Tempo, Note, Note, Note ....}
+
 // Mario Death
 uint16_t Death_Notes[13] = {13, C6, 0, G5, 0, E5, A5, B5, A5, Ab5, Bb5, Ab5, G5};
 uint8_t Death_Times[13] = {110, E, E, E, E, Q, T, T, T, Q, Q, Q, 3*Q};
@@ -53,8 +57,10 @@ uint8_t BQ_Times[171] = {200, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, 
                          E, E, Q, Q, Q, Q, 2*Q, Q, E, E, E, E, E, E, Q, Q, Q, DQ + S, S, E, E, E, E, Q, Q, Q, Q, E, DQ, E, Q, E, Q, DQ, E, DQ, E, Q, Q, E, Q, S, Q, E, Q, E, E, Q, Q, E, Q, Q, Q, Q, Q, Q, E, E, E, E + S, S,
                          Q, E, E, E, Q, Q, E, Q, Q, Q, Q, E, Q, Q, Q, Q, E, Q, E, Q, E, Q, Q, Q, S, S, DQ, E, Q, E, E, Q, Q, Q, E, Q, Q + S, S, Q, Q, Q, E, E, E, E, E, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, H, E, 2*Q, Q, E, E, E, Q};
 
-uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, BQ_Notes};
-uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, BQ_Times};
+
+
+uint16_t* songNotes[totalSongs] = {Death_Notes, HCTS_Notes, FGM_Notes, BQ_Notes};
+uint8_t* songTimes[totalSongs] = {Death_Times, HCTS_Times, FGM_Times, BQ_Times};
 
 /**
  * Initializes buzzer
