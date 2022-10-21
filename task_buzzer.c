@@ -45,13 +45,8 @@ uint16_t FGM_Notes[51] = {51, G5, D6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, D5, G5,
 uint16_t FGM_Times[51] = {51, Q, Q, DQ, E, E, E, E, E, E, E, Q, E, E, E, E, E, S, S, E, E, E, S, S, E, S, S, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, DQ};
 
 // BrodyQuest
-uint16_t BQ_Notes[] = {};
-uint16_t BQ_Times[] = {};
-
-uint8_t Fun_VLengths[6] = {19, 23, 20, 21, 20, 31};
-uint16_t Fun_Chorus1[10] = {C6, C6, C6, A5, G5, C6, E6, F6, Fs6, G6};
-uint16_t Fun_Chorus2[10] = {A6, A6, A6, G6, E6, F6, F6, G6, A6, C7};
-uint16_t Fun_CTime[10] = {Q, Q, Q, E, E, DQ, Q, E, E, E};
+uint16_t BQ_Notes[36] = {36, C6, C6, C6, A5, G5, C6, E6, F6, Fs6, G6, C6, C6, C6, A5, G5, C6, E6, F6, Fs6, G6, A6, A6, A6, G6, E6, F6, F6, G6, A6, C7, C6, C6, C6, A5, G5};
+uint16_t BQ_Times[36] = {36, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E};
 
 uint16_t Fun_Verse1[19] = {G6, A6, C7, D7, E7, C7, G6, 0, G6, A6, G6, F6, E6, 0, F6, E6, D6, C6, 0};
 uint16_t Fun_VTime1[19] = {E, E, Q, Q, Q, Q, 2*Q, Q, E, E, E, E, E, E, Q, Q, Q, DQ + S, S};
@@ -67,8 +62,8 @@ uint16_t Fun_Verse6[31] = {0, C6, A5, G5, C5, A5, G5, E5, A5, G5, E5, G5, A5, C6
 uint16_t Fun_VTime6[31] = {E, E, E, E, E, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, H, E, 2*Q, Q, E, E, E, Q};
 
 
-uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes};
-uint16_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times};
+uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, BQ_Notes};
+uint16_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, BQ_Times};
 
 /**
  * Initializes buzzer
@@ -117,165 +112,6 @@ void turn_off(void) {
     TIMER_A0->CTL &= ~TIMER_A_CTL_MC_MASK;
 }
 
-/**
- * Plays death jingle
- */
-void playDeath(void) {
-    int i = 0;
-
-    for (i = 0; i < 12; i++) {
-        if (Death_Notes[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Death_Time[i] * 2));
-        } else {
-            play_note(24000000 / Death_Notes[i]);
-            vTaskDelay(pdMS_TO_TICKS(Death_Time[i] * 2));
-        }
-    }
-    turn_off();
-}
-
-void playChorus(void) {
-    int i = 0;
-    int j = 0;
-
-    for (j = 0; j < 2; j++) {
-        for (i = 0; i < 10; i++) {
-            if (Fun_Chorus1[i] == 0) {
-                turn_off();
-                vTaskDelay(pdMS_TO_TICKS(Fun_CTime[i]));
-            } else {
-                play_note(24000000 / Fun_Chorus1[i]);
-                vTaskDelay(pdMS_TO_TICKS(Fun_CTime[i]));
-            }
-        }
-    }
-
-    for (i = 0; i < 10; i++) {
-        if (Fun_Chorus2[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_CTime[i]));
-        } else {
-            play_note(24000000 / Fun_Chorus2[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_CTime[i]));
-        }
-    }
-
-    for (i = 0; i < 5; i++) {
-        if (Fun_Chorus1[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_CTime[i]));
-        } else {
-            play_note(24000000 / Fun_Chorus1[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_CTime[i]));
-        }
-    }
-
-    play_note(24000000 / Fun_Chorus1[5]);
-    vTaskDelay(pdMS_TO_TICKS(Fun_CTime[5] - E));
-}
-
-void playVerses() {
-    int i = 0;
-
-    for (i = 0; i < Fun_VLengths[0]; i++) {
-        if (Fun_Verse1[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime1[i]));
-        } else {
-            play_note(24000000 / Fun_Verse1[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime1[i]));
-        }
-    }
-
-    for (i = 0; i < Fun_VLengths[1]; i++) {
-        if (Fun_Verse2[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime2[i]));
-        } else {
-            play_note(24000000 / Fun_Verse2[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime2[i]));
-        }
-    }
-
-    for (i = 0; i < Fun_VLengths[2]; i++) {
-        if (Fun_Verse3[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime3[i]));
-        } else {
-            play_note(24000000 / Fun_Verse3[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime3[i]));
-        }
-    }
-
-    for (i = 0; i < Fun_VLengths[3]; i++) {
-        if (Fun_Verse4[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime4[i]));
-        } else {
-            play_note(24000000 / Fun_Verse4[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime4[i]));
-        }
-    }
-
-    for (i = 0; i < Fun_VLengths[4]; i++) {
-        if (Fun_Verse5[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime5[i]));
-        } else {
-            play_note(24000000 / Fun_Verse5[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime5[i]));
-        }
-    }
-
-    for (i = 0; i < Fun_VLengths[5]; i++) {
-        if (Fun_Verse6[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime6[i]));
-        } else {
-            play_note(24000000 / Fun_Verse6[i]);
-            vTaskDelay(pdMS_TO_TICKS(Fun_VTime6[i]));
-        }
-    }
-}
-
-void playBrody(void) {
-    playChorus();
-    playVerses();
-
-    turn_off();
-}
-
-void playHCTS(void) {
-    int i = 0;
-
-    for (i = 0; i < 32; i++) {
-        if (HCTS_Notes[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(HCTS_Time[i] * 2));
-        } else {
-            play_note(24000000 / HCTS_Notes[i]);
-            vTaskDelay(pdMS_TO_TICKS(HCTS_Time[i] * 2));
-        }
-    }
-    turn_off();
-}
-
-void playFGM(void) {
-    int i = 0;
-
-    for (i = 0; i < 50; i++) {
-        if (FGM_Notes[i] == 0) {
-            turn_off();
-            vTaskDelay(pdMS_TO_TICKS(FGM_Time[i] * 2));
-        } else {
-            play_note(24000000 / FGM_Notes[i]);
-            vTaskDelay(pdMS_TO_TICKS(FGM_Time[i] * 2));
-        }
-    }
-    turn_off();
-}
-
 void playSong(int songNum) {
     uint16_t* notes = songNotes[songNum];
     uint16_t* times = songTimes[songNum];
@@ -305,21 +141,8 @@ void Task_playSound(void *pvParameters) {
     while (1) {
         xQueueReceive(Queue_Sound, &songSel, portMAX_DELAY);
 
-        switch (songSel) {
-            case 0:
-                playBrody();
-                break;
-            case 1:
-                playSong(0);
-                break;
-            case 2:
-                playSong(1);
-                break;
-            case 3:
-                playFGM();
-                break;
-            default:
-                break;
+        if (songSel < totalSongs) {
+            playSong(songSel);
         }
     }
 }
