@@ -6,9 +6,6 @@
  */
 
 
-#include <time.h>          // These two are needed for random action generation
-#include <stdlib.h>
-
 #include "main.h" // For LCD Semaphore
 #include "task_lcd_driver.h"
 #include "task_lcd_draw.h"
@@ -43,7 +40,7 @@ void Task_LCD_Driver(void* pvParameters){
             if (msgReceived.direction == UP) {
                 player_score = (player_score + 1) % totalSongs;
             } else {
-                player_score = (--player_score < 0) ? -1 * player_score % totalSongs : player_score % totalSongs;
+                player_score = (--player_score < 0) ? totalSongs - 1 : player_score % totalSongs;
             }
         }
 

@@ -25,26 +25,26 @@ main.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/
 main.obj: ../task_lcd_driver.h
 main.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h
 main.obj: ../task_buzzer.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h
 main.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stddef.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h
 main.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdlib.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h
 main.obj: ../enums.h
 main.obj: ../task_lcd_draw.h
 main.obj: ../bop_it_images.h
 main.obj: ../lcd.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/task_buttons.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h
-main.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/task_adc.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_adc.h
 
 ../main.c:
 
@@ -96,29 +96,29 @@ D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/st
 
 ../task_buzzer.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h:
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stddef.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h:
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdlib.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h:
 
 ../enums.h:
 
@@ -128,11 +128,11 @@ C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h:
 
 ../lcd.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/task_buttons.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/task_adc.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_adc.h:
 

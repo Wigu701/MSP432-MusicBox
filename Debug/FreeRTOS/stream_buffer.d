@@ -13,18 +13,18 @@ FreeRTOS/stream_buffer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-c
 FreeRTOS/stream_buffer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/_stdint.h
 FreeRTOS/stream_buffer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/string.h
 FreeRTOS/stream_buffer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/xlocale/_string.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h
 FreeRTOS/stream_buffer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stddef.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h
 FreeRTOS/stream_buffer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdlib.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h
-FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/stream_buffer.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h
+FreeRTOS/stream_buffer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/stream_buffer.h
 
 ../FreeRTOS/stream_buffer.c:
 
@@ -52,27 +52,27 @@ D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/st
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/xlocale/_string.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h:
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stddef.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h:
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdlib.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/projdefs.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/portable.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/deprecated_definitions.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Portable/portmacro.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/mpu_wrappers.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h:
 
-C:/Users/wigu7/Projects/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/stream_buffer.h:
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/stream_buffer.h:
 

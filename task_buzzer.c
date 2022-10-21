@@ -2,7 +2,7 @@
 #include <task_buzzer.h>
 
 QueueHandle_t Queue_Sound;
-extern volatile int totalSongs = 3;
+extern volatile int totalSongs = 4;
 
 #define Q 300
 #define E 150
@@ -14,12 +14,14 @@ extern volatile int totalSongs = 3;
 #define C5 523
 #define D5 587
 #define E5 659
+#define Gb5 740
 #define G5 784
 #define Ab5 831
 #define A5 880
 #define Bb5 932
 #define B5 988
 #define C6 1047
+#define Db6 1109
 #define D6 1175
 #define E6 1319
 #define F6 1397
@@ -30,8 +32,21 @@ extern volatile int totalSongs = 3;
 #define D7 2349
 #define E7 2637
 
-uint16_t Death_Notes[13] = {C6, 0, G5, 0, E5, A5, B5, A5, Ab5, Bb5, Ab5, G5};
-uint16_t Death_Time[13] = {E, E, E, E, Q, T, T, T, Q, Q, Q, 3*Q};
+// Mario Death
+uint16_t Death_Notes[13] = {13, C6, 0, G5, 0, E5, A5, B5, A5, Ab5, Bb5, Ab5, G5};
+uint16_t Death_Times[13] = {13, E, E, E, E, Q, T, T, T, Q, Q, Q, 3*Q};
+
+// Here Comes the Sun
+uint16_t HCTS_Notes[33] = {33, Db6, A5, B5, Db6, A5, Db6, B5, A5, Gb5, A5, B5, A5, Gb5, Ab5, Gb5, Ab5, A5, B5, 0, Db6, A5, B5, Db6, A5, Db6, B5, A5, Gb5, Db6, B5, A5, Ab5};
+uint16_t HCTS_Times[33] = {33, E, E, E, Q, DQ, E, Q, Q, Q, Q, Q, Q, E, E, E, E, Q, DQ, Q, E, E, E, Q, DQ, E, Q, Q, Q, Q, Q, Q, H};
+
+// Bach Fugue in G Minor
+uint16_t FGM_Notes[51] = {51, G5, D6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, D5, G5, D5, A5, D5, Bb5, A5, G5, A5, D5, G5, D5, G5, A5, D5, A5, Bb5, A5, G5, A5, D5, D6, C6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, G5, D5, G5, A5, Bb5, C6, D6, E6, D6};
+uint16_t FGM_Times[51] = {51, Q, Q, DQ, E, E, E, E, E, E, E, Q, E, E, E, E, E, S, S, E, E, E, S, S, E, S, S, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, DQ};
+
+// BrodyQuest
+uint16_t BQ_Notes[] = {};
+uint16_t BQ_Times[] = {};
 
 uint8_t Fun_VLengths[6] = {19, 23, 20, 21, 20, 31};
 uint16_t Fun_Chorus1[10] = {C6, C6, C6, A5, G5, C6, E6, F6, Fs6, G6};
@@ -51,6 +66,9 @@ uint16_t Fun_VTime5[20] = {Q, Q, Q, S, S, DQ, E, Q, E, E, Q, Q, Q, E, Q, Q + S, 
 uint16_t Fun_Verse6[31] = {0, C6, A5, G5, C5, A5, G5, E5, A5, G5, E5, G5, A5, C6, D6, C6, A5, E5, G5, A5, G5, E5, G5, A5, G5, E5, 0, D5, C5, D5, E5};
 uint16_t Fun_VTime6[31] = {E, E, E, E, E, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, H, E, 2*Q, Q, E, E, E, Q};
 
+
+uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes};
+uint16_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times};
 
 /**
  * Initializes buzzer
@@ -97,15 +115,6 @@ void play_note(uint32_t note_period_ticks) {
 void turn_off(void) {
     // Turn off timer
     TIMER_A0->CTL &= ~TIMER_A_CTL_MC_MASK;
-}
-
-/**
- * Plays ping noise indicating new action
- */
-void playPing(void) {
-    play_note(12000);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    turn_off();
 }
 
 /**
@@ -230,10 +239,58 @@ void playVerses() {
     }
 }
 
-void playFun(void) {
+void playBrody(void) {
     playChorus();
     playVerses();
 
+    turn_off();
+}
+
+void playHCTS(void) {
+    int i = 0;
+
+    for (i = 0; i < 32; i++) {
+        if (HCTS_Notes[i] == 0) {
+            turn_off();
+            vTaskDelay(pdMS_TO_TICKS(HCTS_Time[i] * 2));
+        } else {
+            play_note(24000000 / HCTS_Notes[i]);
+            vTaskDelay(pdMS_TO_TICKS(HCTS_Time[i] * 2));
+        }
+    }
+    turn_off();
+}
+
+void playFGM(void) {
+    int i = 0;
+
+    for (i = 0; i < 50; i++) {
+        if (FGM_Notes[i] == 0) {
+            turn_off();
+            vTaskDelay(pdMS_TO_TICKS(FGM_Time[i] * 2));
+        } else {
+            play_note(24000000 / FGM_Notes[i]);
+            vTaskDelay(pdMS_TO_TICKS(FGM_Time[i] * 2));
+        }
+    }
+    turn_off();
+}
+
+void playSong(int songNum) {
+    uint16_t* notes = songNotes[songNum];
+    uint16_t* times = songTimes[songNum];
+    size_t length = notes[0];
+
+    int i;
+    for (i = 1; i < length; i++) {
+        if (notes[i] == 0) {
+            turn_off();
+            vTaskDelay(pdMS_TO_TICKS(times[i] * 2));
+        } else {
+            play_note(24000000 / notes[i]);
+            vTaskDelay(pdMS_TO_TICKS(times[i] * 2));
+        }
+    }
     turn_off();
 }
 
@@ -250,13 +307,16 @@ void Task_playSound(void *pvParameters) {
 
         switch (songSel) {
             case 0:
-                playFun();
+                playBrody();
                 break;
             case 1:
-                playDeath();
+                playSong(0);
                 break;
             case 2:
-                playPing();
+                playSong(1);
+                break;
+            case 3:
+                playFGM();
                 break;
             default:
                 break;
