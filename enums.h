@@ -11,7 +11,7 @@
 #ifndef ENUMS_H_
 #define ENUMS_H_
 
-typedef enum {FLICK, CLICK} ACTION;
+typedef enum {FLICK, CLICK, IO} ACTION;
 typedef enum {UP, DOWN} DIRECTION;
 
 typedef struct {

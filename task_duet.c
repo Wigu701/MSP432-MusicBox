@@ -22,6 +22,14 @@ bool detect_pin() {
     return (P2->IN & BIT3) == 8;
 }
 
+void set_pin(char on) {
+    if (on) {
+        P4->OUT |= BIT6;
+    } else {
+        P4->OUT &= ~BIT6;
+    }
+}
+
 
 /**
  * Send message to queue if input pin is high
@@ -29,11 +37,11 @@ bool detect_pin() {
  */
 void Task_duet(void *pvParameters) {
     initialize_pins();
-    P4->OUT &= ~BIT6;
+    set_pin(0);
 
     // Stores information about action for queue
     MESSAGE_t msg;
-    msg.action = CLICK;
+    msg.action = IO;
 
     while(1)
     {

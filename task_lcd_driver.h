@@ -15,6 +15,11 @@
 #include <FreeRTOS.h>
 #include <task.h>
 #include <queue.h>
+#include "task_lcd_draw.h"
+#include "enums.h"
+#include "task_buzzer.h"
+#include "main.h" // For LCD Semaphore
+#include "task_duet.h"
 
 extern QueueHandle_t Queue_LCD_Driver;
 

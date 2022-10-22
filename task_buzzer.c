@@ -109,29 +109,11 @@ void turn_off(void) {
     TIMER_A0->CTL &= ~TIMER_A_CTL_MC_MASK;
 }
 
-bool get_mode() {
-    return (P2->IN & BIT3) == 8;
-}
-
-void set_pin(bool on) {
-    if (on) {
-        P4->OUT |= BIT6;
-    } else {
-        P4->OUT &= ~BIT6;
-    }
-}
-
 void playSong(int songNum) {
-    // If not duet triggered, set playing pin
-    if (!get_mode()) {
-        set_pin(0);
-    }
     uint16_t* notes = songNotes[songNum];
     uint8_t* times = songTimes[songNum];
     size_t length = notes[0];
     TickType_t noteInterval = 60000 / (times[0] << 3);
-
-    set_pin(1);
 
     int i;
     for (i = 1; i < length; i++) {

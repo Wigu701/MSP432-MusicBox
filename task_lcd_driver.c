@@ -5,12 +5,9 @@
  *      Author: pnowa
  */
 
-
-#include "main.h" // For LCD Semaphore
 #include "task_lcd_driver.h"
-#include "task_lcd_draw.h"
-#include "enums.h"
-#include "task_buzzer.h"
+
+
 
 QueueHandle_t Queue_LCD_Driver;
 
@@ -32,9 +29,13 @@ void Task_LCD_Driver(void* pvParameters){
         xQueueReset(Queue_LCD_Driver);
         xQueueReceive(Queue_LCD_Driver, &msgReceived, portMAX_DELAY);
 
-        if (msgReceived.action == CLICK) {
+        if (msgReceived.action == CLICK || msgReceived.action == IO) {
             soundSel = player_score;
+            if (msgReceived.action == CLICK) {
+                set_pin(1);
+            }
             xQueueSendToBack(Queue_Sound, &soundSel, portMAX_DELAY);
+            set_pin(0);
         } else {
             if (msgReceived.direction == UP) {
                 player_score = (player_score + 1) % totalSongs;

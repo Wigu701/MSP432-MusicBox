@@ -15,6 +15,11 @@
 extern TaskHandle_t Task_Duet_Handle;
 
 /**
+ * Sets output pin
+ */
+void set_pin(char on);
+
+/**
  * Detects if either button is pressed. If yes, sends message to queue
  */
 void Task_duet(void *pvParameters);
