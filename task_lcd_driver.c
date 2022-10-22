@@ -35,7 +35,6 @@ void Task_LCD_Driver(void* pvParameters){
         if (msgReceived.action == CLICK) {
             soundSel = player_score;
             xQueueSendToBack(Queue_Sound, &soundSel, portMAX_DELAY);
-            vTaskDelay(pdMS_TO_TICKS(5));
         } else {
             if (msgReceived.direction == UP) {
                 player_score = (player_score + 1) % totalSongs;
@@ -43,6 +42,6 @@ void Task_LCD_Driver(void* pvParameters){
                 player_score = (--player_score < 0) ? totalSongs - 1 : player_score % totalSongs;
             }
         }
-
+        vTaskDelay(pdMS_TO_TICKS(5));
     }
 }

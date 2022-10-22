@@ -45,6 +45,7 @@ task_lcd_driver.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBo
 task_lcd_driver.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h
 task_lcd_driver.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h
 task_lcd_driver.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_adc.h
+task_lcd_driver.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h
 
 ../task_lcd_driver.c:
 
@@ -135,4 +136,6 @@ C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h:
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h:
 
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_adc.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h:
 

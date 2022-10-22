@@ -26,6 +26,7 @@
 #include <task_buttons.h>
 #include <task_buzzer.h>
 #include <task_timer_polling.h>
+#include <task_duet.h>
 
 
 extern SemaphoreHandle_t Sem_LCD;

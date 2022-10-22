@@ -11,7 +11,7 @@
 #include <queue.h>
 
 extern QueueHandle_t Queue_Sound;
-extern volatile int totalSongs;
+const extern int totalSongs;
 
 /**
  * Initializes buzzer

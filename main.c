@@ -64,6 +64,15 @@ int main(void)
         &Task_Buttons_Handle
     );
 
+    xTaskCreate
+    (   Task_duet,
+        "Duet signals",
+        configMINIMAL_STACK_SIZE,
+        NULL,
+        1,
+        &Task_Duet_Handle
+    );
+
 
     xTaskCreate
     (   Task_pollTimer,

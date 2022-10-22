@@ -7,11 +7,11 @@ TaskHandle_t Task_Duet_Handle = NULL;
 /**
  * Initializes duet pins
  *
- * P3.7: Input Pin on Bank J4
+ * P2.3: Input Pin on Bank J4
  * P4.6: Output Pin on Bank J1
  */
 void initialize_pins() {
-    P3->DIR &= ~BIT7;
+    P2->DIR &= ~BIT3;
     P4->DIR |= BIT6;
 }
 
@@ -19,7 +19,7 @@ void initialize_pins() {
  * Detects if input pin is asserted
  */
 bool detect_pin() {
-    return (P3->IN & BIT7) == 1;
+    return (P2->IN & BIT3) == 8;
 }
 
 
@@ -45,5 +45,6 @@ void Task_duet(void *pvParameters) {
                 vTaskDelay(pdMS_TO_TICKS(5));
             }
         }
+        vTaskDelay(pdMS_TO_TICKS(5));
     }
 }
