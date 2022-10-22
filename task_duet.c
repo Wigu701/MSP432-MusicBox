@@ -50,15 +50,11 @@ void Task_duet(void *pvParameters) {
 
     while(1)
     {
-        // If pos edge, send message to queue
-        if (detect_pin()) {
-            // Send thing into queue
-            xQueueSendToBack(Queue_LCD_Driver, &msg, portMAX_DELAY);
-            while(detect_pin()) {
-                taskYIELD();
-            }
-        }
-        taskYIELD();
+        // Wait for GPIO interrupt
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+        // Send thing into queue
+        xQueueSendToBack(Queue_LCD_Driver, &msg, portMAX_DELAY);
     }
 }
 
