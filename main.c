@@ -69,7 +69,7 @@ int main(void)
         "Duet signals",
         configMINIMAL_STACK_SIZE,
         NULL,
-        1,
+        2,
         &Task_Duet_Handle
     );
 

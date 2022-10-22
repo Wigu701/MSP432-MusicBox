@@ -11,8 +11,13 @@ TaskHandle_t Task_Duet_Handle = NULL;
  * P4.6: Output Pin on Bank J1
  */
 void initialize_pins() {
+    // Set directions
     P2->DIR &= ~BIT3;
     P4->DIR |= BIT6;
+
+    // Enable interrupts for input pin
+    P2->IE |= BIT3;
+    P2->IES &= ~BIT3; // Rising edge
 }
 
 /**
@@ -56,3 +61,22 @@ void Task_duet(void *pvParameters) {
         taskYIELD();
     }
 }
+
+/**
+ * Interrupt handler for input gpio
+ */
+void PORT2_IRQHandler (void) {
+    BaseType_t xHigherPriorityTaskWoken;
+
+    // Notify task
+    vTaskNotifyGiveFromISR(
+        Task_Duet_Handle,
+        &xHigherPriorityTaskWoken
+    );
+
+    // Clear interrupt
+    P2->IFG &= ~BIT3;
+
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
