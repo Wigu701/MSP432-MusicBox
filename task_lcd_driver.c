@@ -25,7 +25,7 @@ void Task_LCD_Driver(void* pvParameters){
     while (true) {
         xSemaphoreTake(Sem_LCD, portMAX_DELAY);
         refresh_screen();
-        vTaskDelay(pdMS_TO_TICKS(5));
+        taskYIELD();
         xSemaphoreGive(Sem_LCD);
 
         // Wait for first input back
@@ -42,6 +42,6 @@ void Task_LCD_Driver(void* pvParameters){
                 player_score = (--player_score < 0) ? totalSongs - 1 : player_score % totalSongs;
             }
         }
-        vTaskDelay(pdMS_TO_TICKS(5));
+        taskYIELD();
     }
 }

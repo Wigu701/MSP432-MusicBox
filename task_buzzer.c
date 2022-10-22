@@ -139,7 +139,7 @@ void playSong(int songNum) {
             turn_off();
             vTaskDelay(pdMS_TO_TICKS(times[i] * noteInterval));
         } else {
-            play_note(24000000 / notes[i]);
+            play_note(SystemCoreClock / notes[i]);
             vTaskDelay(pdMS_TO_TICKS(times[i] * noteInterval));
         }
     }
@@ -156,7 +156,6 @@ void Task_playSound(void *pvParameters) {
 
     while (1) {
         xQueueReceive(Queue_Sound, &songSel, portMAX_DELAY);
-
         if (songSel < totalSongs) {
             playSong(songSel);
         }

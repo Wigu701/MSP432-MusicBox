@@ -42,9 +42,9 @@ void Task_duet(void *pvParameters) {
             // Send thing into queue
             xQueueSendToBack(Queue_LCD_Driver, &msg, portMAX_DELAY);
             while(detect_pin()) {
-                vTaskDelay(pdMS_TO_TICKS(5));
+                taskYIELD();
             }
         }
-        vTaskDelay(pdMS_TO_TICKS(5));
+        taskYIELD();
     }
 }
