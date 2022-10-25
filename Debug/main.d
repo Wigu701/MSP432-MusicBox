@@ -37,12 +37,13 @@ main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/
 main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h
 main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h
 main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h
-main.obj: ../task_lcd_draw.h
-main.obj: ../task_lcd_driver.h
-main.obj: ../bop_it_images.h
-main.obj: ../enums.h
-main.obj: ../main.h
 main.obj: ../task_duet.h
+main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h
+main.obj: ../task_lcd_driver.h
+main.obj: ../enums.h
+main.obj: ../task_lcd_draw.h
+main.obj: ../bop_it_images.h
+main.obj: ../main.h
 main.obj: ../lcd.h
 main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h
 main.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h
@@ -123,17 +124,19 @@ C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/li
 
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h:
 
-../task_lcd_draw.h:
+../task_duet.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h:
 
 ../task_lcd_driver.h:
 
-../bop_it_images.h:
-
 ../enums.h:
 
-../main.h:
+../task_lcd_draw.h:
 
-../task_duet.h:
+../bop_it_images.h:
+
+../main.h:
 
 ../lcd.h:
 

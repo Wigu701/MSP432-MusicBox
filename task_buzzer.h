@@ -4,14 +4,17 @@
 #include "msp.h"
 #include <stdint.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 /* RTOS header files */
 #include <FreeRTOS.h>
 #include <task.h>
 #include <queue.h>
+#include "task_duet.h"
 
 extern QueueHandle_t Queue_Sound;
 const extern int totalSongs;
+extern volatile bool playing;
 
 /**
  * Initializes buzzer

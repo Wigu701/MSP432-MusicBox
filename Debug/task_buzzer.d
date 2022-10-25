@@ -1,13 +1,12 @@
 # FIXED
 
 task_buzzer.obj: ../task_buzzer.c
-task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h
-task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_ti_config.h
-task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/linkage.h
 task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/ccs_base/arm/include/msp.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/ccs_base/arm/include/msp432p401r.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdint.h
+task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_ti_config.h
+task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/linkage.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_stdint40.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/stdint.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/sys/cdefs.h
@@ -23,6 +22,7 @@ task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/ccs_base/arm/include/CMSIS/cms
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/ccs_base/arm/include/system_msp432p401r.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdio.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdarg.h
+task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h
 task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h
 task_buzzer.obj: D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stddef.h
 task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOSConfig.h
@@ -35,14 +35,22 @@ task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/Fr
 task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/task.h
 task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h
 task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_lcd_driver.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_lcd_draw.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_lcd_driver.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/bop_it_images.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/enums.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/main.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/lcd.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_adc.h
+task_buzzer.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h
 
 ../task_buzzer.c:
-
-D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h:
-
-D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_ti_config.h:
-
-D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/linkage.h:
 
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h:
 
@@ -51,6 +59,10 @@ D:/Program\ Files/ti/ccs1110/ccs/ccs_base/arm/include/msp.h:
 D:/Program\ Files/ti/ccs1110/ccs/ccs_base/arm/include/msp432p401r.h:
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdint.h:
+
+D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_ti_config.h:
+
+D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/linkage.h:
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/_stdint40.h:
 
@@ -82,6 +94,8 @@ D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/st
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdarg.h:
 
+D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stdbool.h:
+
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/FreeRTOS.h:
 
 D:/Program\ Files/ti/ccs1110/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include/stddef.h:
@@ -105,4 +119,32 @@ C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/ta
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/list.h:
 
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/queue.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_lcd_driver.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_lcd_draw.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_lcd_driver.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/bop_it_images.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/enums.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/main.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/lcd.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_adc.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h:
 

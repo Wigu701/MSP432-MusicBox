@@ -38,15 +38,16 @@ task_adc.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeR
 task_adc.obj: ../enums.h
 task_adc.obj: ../task_lcd_driver.h
 task_adc.obj: ../task_buzzer.h
-task_adc.obj: ../task_lcd_draw.h
+task_adc.obj: ../task_duet.h
+task_adc.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h
 task_adc.obj: ../task_lcd_driver.h
+task_adc.obj: ../task_lcd_draw.h
 task_adc.obj: ../bop_it_images.h
 task_adc.obj: ../main.h
 task_adc.obj: ../lcd.h
 task_adc.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/semphr.h
 task_adc.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h
 task_adc.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h
-task_adc.obj: C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h
 
 ../task_adc.c:
 
@@ -124,9 +125,13 @@ C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/qu
 
 ../task_buzzer.h:
 
-../task_lcd_draw.h:
+../task_duet.h:
+
+C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buzzer.h:
 
 ../task_lcd_driver.h:
+
+../task_lcd_draw.h:
 
 ../bop_it_images.h:
 
@@ -139,6 +144,4 @@ C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/FreeRTOS/Include/se
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_buttons.h:
 
 C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_timer_polling.h:
-
-C:/Users/wigu7/Projects/Coursework/CS\ 353/FreeRTOS/MusicBox/task_duet.h:
 

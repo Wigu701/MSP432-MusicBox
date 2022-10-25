@@ -1,8 +1,8 @@
-#include <stdbool.h>
 #include <task_buzzer.h>
 
 QueueHandle_t Queue_Sound;
 const extern int totalSongs = 4;
+volatile bool playing;
 
 #define Q 8
 #define E 4
@@ -114,7 +114,7 @@ void playSong(int songNum) {
     uint8_t* times = songTimes[songNum];
     size_t length = notes[0];
     TickType_t noteInterval = 60000 / (times[0] << 3);
-
+    set_pin(0);
     int i;
     for (i = 1; i < length; i++) {
         if (notes[i] == 0) {
@@ -139,7 +139,10 @@ void Task_playSound(void *pvParameters) {
     while (1) {
         xQueueReceive(Queue_Sound, &songSel, portMAX_DELAY);
         if (songSel < totalSongs) {
+            playing = true;
             playSong(songSel);
+            playing = false;
         }
+
     }
 }

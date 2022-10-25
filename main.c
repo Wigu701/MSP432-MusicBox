@@ -69,7 +69,7 @@ int main(void)
         "Duet signals",
         configMINIMAL_STACK_SIZE,
         NULL,
-        2,
+        1,
         &Task_Duet_Handle
     );
 
@@ -109,6 +109,8 @@ int main(void)
         1,
         NULL
     );
+
+    __enable_irq();
 
     /* Start the FreeRTOS scheduler */
     vTaskStartScheduler();

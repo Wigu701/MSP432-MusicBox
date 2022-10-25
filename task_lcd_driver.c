@@ -22,8 +22,10 @@ void Task_LCD_Driver(void* pvParameters){
     while (true) {
         xSemaphoreTake(Sem_LCD, portMAX_DELAY);
         refresh_screen();
-        taskYIELD();
         xSemaphoreGive(Sem_LCD);
+        while (playing) {
+            vTaskDelay(pdMS_TO_TICKS(5));
+        }
 
         // Wait for first input back
         xQueueReset(Queue_LCD_Driver);
@@ -35,7 +37,6 @@ void Task_LCD_Driver(void* pvParameters){
                 set_pin(1);
             }
             xQueueSendToBack(Queue_Sound, &soundSel, portMAX_DELAY);
-            set_pin(0);
         } else {
             if (msgReceived.direction == UP) {
                 player_score = (player_score + 1) % totalSongs;
@@ -43,6 +44,5 @@ void Task_LCD_Driver(void* pvParameters){
                 player_score = (--player_score < 0) ? totalSongs - 1 : player_score % totalSongs;
             }
         }
-        taskYIELD();
     }
 }

@@ -7,31 +7,35 @@ TaskHandle_t Task_Duet_Handle = NULL;
 /**
  * Initializes duet pins
  *
- * P2.3: Input Pin on Bank J4
- * P4.6: Output Pin on Bank J1
+ * P1.0: Input Pin on Bank J4
+ * P2.0: Output Pin on Bank J1
  */
 void initialize_pins() {
-    // Set directions
-    P2->DIR &= ~BIT3;
-    P4->DIR |= BIT6;
+    // Set directions, select GPIO
+    P1->DIR &= ~BIT0;
+    P2->DIR |= BIT0;
+    P1->SEL0 &= ~BIT0;
+    P1->SEL1 &= ~BIT0;
+    P2->SEL0 &= ~BIT0;
+    P2->SEL1 &= ~BIT0;
 
-    // Enable interrupts for input pin
-    P2->IE |= BIT3;
-    P2->IES &= ~BIT3; // Rising edge
+    // Pull down resistor for input
+    //P6->OUT &= ~BIT5;
+    //P6->REN |= BIT5;
 }
 
 /**
  * Detects if input pin is asserted
  */
 bool detect_pin() {
-    return (P2->IN & BIT3) == 8;
+    return P1->IN & BIT0;
 }
 
 void set_pin(char on) {
     if (on) {
-        P4->OUT |= BIT6;
+        P2->OUT |= BIT0;
     } else {
-        P4->OUT &= ~BIT6;
+        P2->OUT &= ~BIT0;
     }
 }
 
@@ -50,29 +54,11 @@ void Task_duet(void *pvParameters) {
 
     while(1)
     {
-        // Wait for GPIO interrupt
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-
-        // Send thing into queue
-        xQueueSendToBack(Queue_LCD_Driver, &msg, portMAX_DELAY);
+        if (detect_pin()) {
+            // Send thing into queue
+            xQueueSendToBack(Queue_LCD_Driver, &msg, portMAX_DELAY);
+        }
+        vTaskDelay(pdMS_TO_TICKS(1));
     }
-}
-
-/**
- * Interrupt handler for input gpio
- */
-void PORT2_IRQHandler (void) {
-    BaseType_t xHigherPriorityTaskWoken;
-
-    // Notify task
-    vTaskNotifyGiveFromISR(
-        Task_Duet_Handle,
-        &xHigherPriorityTaskWoken
-    );
-
-    // Clear interrupt
-    P2->IFG &= ~BIT3;
-
-    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
