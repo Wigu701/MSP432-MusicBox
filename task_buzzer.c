@@ -1,7 +1,7 @@
 #include <task_buzzer.h>
 
 QueueHandle_t Queue_Sound;
-const extern int totalSongs = 4;
+const extern int totalSongs = 5;
 volatile bool playing;
 
 #define Q 8
@@ -12,8 +12,10 @@ volatile bool playing;
 #define T 5
 
 #define C5 523
+#define Db5 554
 #define D5 587
 #define E5 659
+#define F5 698
 #define Gb5 740
 #define G5 784
 #define Ab5 831
@@ -23,11 +25,13 @@ volatile bool playing;
 #define C6 1047
 #define Db6 1109
 #define D6 1175
+#define Eb6 1245
 #define E6 1319
 #define F6 1397
-#define Fs6 1480
+#define Gb6 1480
 #define G6 1568
 #define A6 1760
+#define Bb6 1865
 #define C7 2093
 #define D7 2349
 #define E7 2637
@@ -45,11 +49,20 @@ uint16_t HCTS_Notes[33] = {33, Db6, A5, B5, Db6, A5, Db6, B5, A5, Gb5, A5, B5, A
 uint8_t HCTS_Times[33] = {110, E, E, E, Q, DQ, E, Q, Q, Q, Q, Q, Q, E, E, E, E, Q, DQ, Q, E, E, E, Q, DQ, E, Q, Q, Q, Q, Q, Q, H};
 
 // Bach Fugue in G Minor
-uint16_t FGM_Notes[51] = {51, G5, D6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, D5, G5, D5, A5, D5, Bb5, A5, G5, A5, D5, G5, D5, G5, A5, D5, A5, Bb5, A5, G5, A5, D5, D6, C6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, G5, D5, G5, A5, Bb5, C6, D6, E6, D6};
-uint8_t FGM_Times[51] = {100, Q, Q, DQ, E, E, E, E, E, E, E, Q, E, E, E, E, E, S, S, E, E, E, S, S, E, S, S, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, DQ};
+uint16_t FGM_Notes[140] = {140, G5, D6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, D5, G5, D5, A5, D5, Bb5, A5, G5, A5, D5, G5, D5, G5, A5, D5, A5, Bb5, A5, G5, A5, D5, D6, C6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, G5, D5, G5, A5, Bb5, C6, D6, E6,
+                          F6, E6, D6, F6, E6, D6, Db6, E6, D6, 0, A5, 0, D6, 0, E6, 0, F6, G6, F6, G6, G6, A6, G6, F6, G6, A6, G6, A6, Bb6, A6, G6, F6, E6, F6, A6, G6, A6, Db6, A6, D6, A6, D6, A6, G6, A6, Db6, A6, G6, A6, F6, D6, Db6, D6, G6, D6, Db6, D6, A6, D6, Db6, D6, G6, D6, Db6, D6,
+                          A5, F6, G6, E6, F5, A5, D6, F6, Eb6, A6, 0, Eb6, D6, G6, 0, D6, C6, Bb5, C6, D6, C6, D6, E6, Gb6, G6};
+uint8_t FGM_Times[140] = {200, H, H, 24, Q, Q, Q, Q, Q, Q, Q, H, Q, Q, Q, Q, Q, E, E, Q, Q, Q, E, E, Q, E, E, Q, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                         E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, S, S, Q, S, S, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                         Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, E, E, E, E, E, E, E, E, H};
+
+uint16_t FGM2_Notes[73] = {73, 0, 0, G5, D6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, D5, G5, D5, A5, D5, Bb5, A5, G5, A5, D5, G5, D5, G5, A5, D5, A5, Bb5, A5, G5, A5, D5, D6, C6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, G5, D5, G5, A5, Bb5, C6, D6, E6,
+                           F6, E6, F6, G6, F5, E6, D6, F6, E6, D6, E6, F6, E6, D6, C6, E6, D6, C6, B5, G5, C6};
+uint8_t FGM2_Times[73] = {200, 160, 160, H, H, 24, Q, Q, Q, Q, Q, Q, Q, H, Q, Q, Q, Q, Q, E, E, Q, Q, Q, E, E, Q, E, E, Q, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, Q, Q, Q, Q, H};
 
 // BrodyQuest
-uint16_t BQ_Notes[171] = {171, C6, C6, C6, A5, G5, C6, E6, F6, Fs6, G6, C6, C6, C6, A5, G5, C6, E6, F6, Fs6, G6, A6, A6, A6, G6, E6, F6, F6, G6, A6, C7, C6, C6, C6, A5, G5, C6, // Chorus
+uint16_t BQ_Notes[171] = {171, C6, C6, C6, A5, G5, C6, E6, F6, Gb6, G6, C6, C6, C6, A5, G5, C6, E6, F6, Gb6, G6, A6, A6, A6, G6, E6, F6, F6, G6, A6, C7, C6, C6, C6, A5, G5, C6, // Chorus
                          G6, A6, C7, D7, E7, C7, G6, 0, G6, A6, G6, F6, E6, 0, F6, E6, D6, C6, 0, C6, D6, E6, D6, C6, A5, C6, E6, 0, F6, E6, D6, D6, E6, C6, A5, G5, E5, D5, C5, D5, E5, 0, // Bridge
                          G5, A5, C6, C6, D6, F6, E6, D6, C6, G6, E6, A6, G6, C7, A6, C7, D7, E7, 0, E7, D7, C7, D7, E7, C7, A6, G6, A6, C7, E6, G6, E6, D6, C6, C6, D6, E6, D6, C6, 0,
                          E5, E5, D5, E5, E6, A6, G6, G6, A6, G6, E6, D6, E6, D6, C6, C6, 0, C6, B5, C6, 0, C6, A5, G5, C5, A5, G5, E5, A5, G5, E5, G5, A5, C6, D6, C6, A5, E5, G5, A5, G5, E5, G5, A5, G5, E5, 0, D5, C5, D5, E5};
@@ -58,9 +71,8 @@ uint8_t BQ_Times[171] = {200, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, 
                          Q, E, E, E, Q, Q, E, Q, Q, Q, Q, E, Q, Q, Q, Q, E, Q, E, Q, E, Q, Q, Q, S, S, DQ, E, Q, E, E, Q, Q, Q, E, Q, Q + S, S, Q, Q, Q, E, E, E, E, E, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, H, E, 2*Q, Q, E, E, E, Q};
 
 
-
-uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, BQ_Notes};
-uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, BQ_Times};
+uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, FGM2_Notes, BQ_Notes};
+uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, FGM2_Times, BQ_Times};
 
 /**
  * Initializes buzzer

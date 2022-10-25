@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.5                     
 ******************************************************************************
->> Linked Mon Oct 24 20:36:50 2022
+>> Linked Tue Oct 25 13:18:50 2022
 
 OUTPUT FILE NAME:   <MusicBox.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000614d
@@ -11,24 +11,24 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  MAIN                  00000000   00040000  00006544  00039abc  R  X
+  MAIN                  00000000   00040000  000065e4  00039a1c  R  X
   INFO                  00200000   00004000  00000000  00004000  R  X
-  SRAM_CODE             01000000   00010000  00008759  000078a7  RW X
-  SRAM_DATA             20000000   00010000  00008759  000078a7  RW  
+  SRAM_CODE             01000000   00010000  00008945  000076bb  RW X
+  SRAM_DATA             20000000   00010000  00008945  000076bb  RW  
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00006548   00006548    r-x
+00000000    00000000    000065e8   000065e8    r-x
   00000000    00000000    000000e4   000000e4    r-- .intvecs
   000000e4    000000e4    000060ec   000060ec    r-x .text
   000061d0    000061d0    0000017c   0000017c    r-- .const
-  00006350    00006350    000001f8   000001f8    r-- .cinit
-20000000    20000000    0000855c   00000000    rw-
+  00006350    00006350    00000298   00000298    r-- .cinit
+20000000    20000000    00008748   00000000    rw-
   20000000    20000000    00008185   00000000    rw- .bss
-  20008188    20008188    000003d4   00000000    rw- .data
+  20008188    20008188    000005c0   00000000    rw- .data
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -90,11 +90,13 @@ section   page    origin      length       input sections
                   00006344    00000004     task_buzzer.obj (.const)
                   00006348    00000004     tasks.obj (.const)
 
-.cinit     0    00006350    000001f8     
-                  00006350    000001d4     (.cinit..data.load) [load image, compression = lzss]
-                  00006524    0000000c     (__TI_handler_table)
-                  00006530    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00006538    00000010     (__TI_cinit_table)
+.cinit     0    00006350    00000298     
+                  00006350    0000026d     (.cinit..data.load) [load image, compression = lzss]
+                  000065bd    00000003     --HOLE-- [fill = 0]
+                  000065c0    0000000c     (__TI_handler_table)
+                  000065cc    00000004     --HOLE-- [fill = 0]
+                  000065d0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000065d8    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -120,31 +122,33 @@ section   page    origin      length       input sections
                   20008180    00000004     (.common:Sem_LCD)
                   20008184    00000001     (.common:playing)
 
-.data      0    20008188    000003d4     UNINITIALIZED
+.data      0    20008188    000005c0     UNINITIALIZED
                   20008188    00000156     task_buzzer.obj (.data:BQ_Notes)
-                  200082de    000000ab     task_buzzer.obj (.data:BQ_Times)
-                  20008389    00000001     --HOLE--
-                  2000838a    00000066     task_buzzer.obj (.data:FGM_Notes)
-                  200083f0    00000042     task_buzzer.obj (.data:HCTS_Notes)
-                  20008432    00000002     --HOLE--
-                  20008434    00000034     tasks.obj (.data)
-                  20008468    00000033     task_buzzer.obj (.data:FGM_Times)
-                  2000849b    00000021     task_buzzer.obj (.data:HCTS_Times)
-                  200084bc    0000001a     task_buzzer.obj (.data:Death_Notes)
-                  200084d6    00000002     --HOLE--
-                  200084d8    00000018     heap_4.obj (.data)
-                  200084f0    00000018     port.obj (.data)
-                  20008508    00000010     task_buzzer.obj (.data:songNotes)
-                  20008518    00000010     task_buzzer.obj (.data:songTimes)
-                  20008528    0000000d     task_buzzer.obj (.data:Death_Times)
-                  20008535    00000003     --HOLE--
-                  20008538    0000000c     timers.obj (.data)
-                  20008544    00000004     system_msp432p401r.obj (.data)
-                  20008548    00000004     task_adc.obj (.data)
-                  2000854c    00000004     task_buttons.obj (.data)
-                  20008550    00000004     task_duet.obj (.data)
-                  20008554    00000004     task_lcd_driver.obj (.data)
-                  20008558    00000004     task_timer_polling.obj (.data)
+                  200082de    00000118     task_buzzer.obj (.data:FGM_Notes)
+                  200083f6    000000ab     task_buzzer.obj (.data:BQ_Times)
+                  200084a1    00000001     --HOLE--
+                  200084a2    00000092     task_buzzer.obj (.data:FGM2_Notes)
+                  20008534    0000008c     task_buzzer.obj (.data:FGM_Times)
+                  200085c0    00000049     task_buzzer.obj (.data:FGM2_Times)
+                  20008609    00000001     --HOLE--
+                  2000860a    00000042     task_buzzer.obj (.data:HCTS_Notes)
+                  2000864c    00000034     tasks.obj (.data)
+                  20008680    00000021     task_buzzer.obj (.data:HCTS_Times)
+                  200086a1    00000001     --HOLE--
+                  200086a2    0000001a     task_buzzer.obj (.data:Death_Notes)
+                  200086bc    00000018     heap_4.obj (.data)
+                  200086d4    00000018     port.obj (.data)
+                  200086ec    00000014     task_buzzer.obj (.data:songNotes)
+                  20008700    00000014     task_buzzer.obj (.data:songTimes)
+                  20008714    0000000d     task_buzzer.obj (.data:Death_Times)
+                  20008721    00000003     --HOLE--
+                  20008724    0000000c     timers.obj (.data)
+                  20008730    00000004     system_msp432p401r.obj (.data)
+                  20008734    00000004     task_adc.obj (.data)
+                  20008738    00000004     task_buttons.obj (.data)
+                  2000873c    00000004     task_duet.obj (.data)
+                  20008740    00000004     task_lcd_driver.obj (.data)
+                  20008744    00000004     task_timer_polling.obj (.data)
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -158,7 +162,7 @@ MODULE SUMMARY
        Module                        code    ro data   rw data
        ------                        ----    -------   -------
     .\
-       task_buzzer.obj               384     4         1682   
+       task_buzzer.obj               384     4         2670   
        lcd.obj                       1288    0         0      
        task_lcd_draw.obj             936     0         0      
        system_msp432p401r.obj        852     0         8      
@@ -171,7 +175,7 @@ MODULE SUMMARY
        task_duet.obj                 204     0         8      
        task_timer_polling.obj        32      0         8      
     +--+-----------------------------+-------+---------+---------+
-       Total:                        5098    594       1770   
+       Total:                        5098    594       2758   
                                                               
     .\FreeRTOS\
        heap_4.obj                    1108    0         65600  
@@ -202,21 +206,21 @@ MODULE SUMMARY
        Total:                        536     0         0      
                                                               
        Stack:                        0       0         1024   
-       Linker Generated:             0       504       0      
+       Linker Generated:             0       657       0      
     +--+-----------------------------+-------+---------+---------+
-       Grand Total:                  24806   1110      69282  
+       Grand Total:                  24806   1263      70270  
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00006538 records: 2, size/record: 8, table size: 16
-	.data: load addr=00006350, load size=000001d4 bytes, run addr=20008188, run size=000003d4 bytes, compression=lzss
-	.bss: load addr=00006530, load size=00000008 bytes, run addr=20000000, run size=00008185 bytes, compression=zero_init
+__TI_cinit_table @ 000065d8 records: 2, size/record: 8, table size: 16
+	.data: load addr=00006350, load size=0000026d bytes, run addr=20008188, run size=000005c0 bytes, compression=lzss
+	.bss: load addr=000065d0, load size=00000008 bytes, run addr=20000000, run size=00008185 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00006524 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 000065c0 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -230,7 +234,7 @@ address   name
 0000578b  ADC14_IRQHandler                   
 000061bb  AES256_IRQHandler                  
 20008188  BQ_Notes                           
-200082de  BQ_Times                           
+200083f6  BQ_Times                           
 000061bb  BusFault_Handler                   
 000061cd  C$$EXIT                            
 000061bb  COMP_E0_IRQHandler                 
@@ -243,8 +247,8 @@ address   name
 000061bb  DMA_INT1_IRQHandler                
 000061bb  DMA_INT2_IRQHandler                
 000061bb  DMA_INT3_IRQHandler                
-200084bc  Death_Notes                        
-20008528  Death_Times                        
+200086a2  Death_Notes                        
+20008714  Death_Times                        
 000061bb  DebugMon_Handler                   
 000061bb  Default_Handler                    
 000061bb  EUSCIA0_IRQHandler                 
@@ -255,8 +259,10 @@ address   name
 000061bb  EUSCIB1_IRQHandler                 
 000061bb  EUSCIB2_IRQHandler                 
 000061bb  EUSCIB3_IRQHandler                 
-2000838a  FGM_Notes                          
-20008468  FGM_Times                          
+200084a2  FGM2_Notes                         
+200085c0  FGM2_Times                         
+200082de  FGM_Notes                          
+20008534  FGM_Times                          
 000061bb  FLCTL_IRQHandler                   
 000061bb  FPU_IRQHandler                     
 00004139  HAL_LCD_PortInit                   
@@ -264,8 +270,8 @@ address   name
 000041b5  HAL_LCD_writeCommand               
 000041f5  HAL_LCD_writeData                  
 00004221  HAL_LCD_writeData_16               
-200083f0  HCTS_Notes                         
-2000849b  HCTS_Times                         
+2000860a  HCTS_Notes                         
+20008680  HCTS_Times                         
 000061bb  HardFault_Handler                  
 000061bb  MemManage_Handler                  
 000061bb  NMI_Handler                        
@@ -285,7 +291,7 @@ address   name
 000061bb  SVC_Handler                        
 20008180  Sem_LCD                            
 000061bb  SysTick_Handler                    
-20008544  SystemCoreClock                    
+20008730  SystemCoreClock                    
 00005275  SystemCoreClockUpdate              
 000054ed  SystemInit                         
 000061bb  T32_INT1_IRQHandler                
@@ -299,12 +305,12 @@ address   name
 000061bb  TA2_N_IRQHandler                   
 000061bb  TA3_0_IRQHandler                   
 000061bb  TA3_N_IRQHandler                   
-20008548  Task_ADC_Handle                    
+20008734  Task_ADC_Handle                    
 000056af  Task_ADC_Logic                     
-2000854c  Task_Buttons_Handle                
-20008550  Task_Duet_Handle                   
+20008738  Task_Buttons_Handle                
+2000873c  Task_Duet_Handle                   
 00005c31  Task_LCD_Driver                    
-20008558  Task_TimerPoll_Handle              
+20008744  Task_TimerPoll_Handle              
 00005e2f  Task_buttons                       
 00005f31  Task_duet                          
 00005935  Task_playSound                     
@@ -314,10 +320,10 @@ address   name
 000061bb  WDT_A_IRQHandler                   
 20010000  __STACK_END                        
 00000200  __STACK_SIZE                       
-00006538  __TI_CINIT_Base                    
-00006548  __TI_CINIT_Limit                   
-00006524  __TI_Handler_Table_Base            
-00006530  __TI_Handler_Table_Limit           
+000065d8  __TI_CINIT_Base                    
+000065e8  __TI_CINIT_Limit                   
+000065c0  __TI_Handler_Table_Base            
+000065cc  __TI_Handler_Table_Limit           
 00006109  __TI_auto_init_nobinit_nopinit     
 0000609f  __TI_decompress_lzss               
 000061a1  __TI_decompress_none               
@@ -383,13 +389,13 @@ ffffffff  binit
 00003c6f  pcTimerGetName                     
 0000587f  playSong                           
 00005831  play_note                          
-20008554  player_score                       
+20008740  player_score                       
 20008184  playing                            
 00004641  pvPortMalloc                       
 00001907  pvTaskGetThreadLocalStoragePointer 
 00001fa9  pvTaskIncrementMutexHeldCount      
 000040a9  pvTimerGetTimerID                  
-20008434  pxCurrentTCB                       
+2000864c  pxCurrentTCB                       
 00004a95  pxPortInitialiseStack              
 00004ecd  refresh_screen                     
 00005f09  set_pin                            
@@ -399,8 +405,8 @@ ffffffff  binit
 00006284  sixBitmap                          
 00006321  sixHeightPixels                    
 00006320  sixWidthPixels                     
-20008508  songNotes                          
-20008518  songTimes                          
+200086ec  songNotes                          
+20008700  songTimes                          
 000062a8  threeBitmap                        
 0000631b  threeHeightPixels                  
 0000631a  threeWidthPixels                   
@@ -793,10 +799,10 @@ address   name
 0000633c  ulMaxSyscallInterruptPriority      
 00006344  totalSongs                         
 00006348  uxTopUsedPriority                  
-00006524  __TI_Handler_Table_Base            
-00006530  __TI_Handler_Table_Limit           
-00006538  __TI_CINIT_Base                    
-00006548  __TI_CINIT_Limit                   
+000065c0  __TI_Handler_Table_Base            
+000065cc  __TI_Handler_Table_Limit           
+000065d8  __TI_CINIT_Base                    
+000065e8  __TI_CINIT_Limit                   
 20000000  __start___llvm_prf_cnts            
 20000000  __stop___llvm_prf_cnts             
 20008154  adcReadings                        
@@ -805,22 +811,24 @@ address   name
 20008180  Sem_LCD                            
 20008184  playing                            
 20008188  BQ_Notes                           
-200082de  BQ_Times                           
-2000838a  FGM_Notes                          
-200083f0  HCTS_Notes                         
-20008434  pxCurrentTCB                       
-20008468  FGM_Times                          
-2000849b  HCTS_Times                         
-200084bc  Death_Notes                        
-20008508  songNotes                          
-20008518  songTimes                          
-20008528  Death_Times                        
-20008544  SystemCoreClock                    
-20008548  Task_ADC_Handle                    
-2000854c  Task_Buttons_Handle                
-20008550  Task_Duet_Handle                   
-20008554  player_score                       
-20008558  Task_TimerPoll_Handle              
+200082de  FGM_Notes                          
+200083f6  BQ_Times                           
+200084a2  FGM2_Notes                         
+20008534  FGM_Times                          
+200085c0  FGM2_Times                         
+2000860a  HCTS_Notes                         
+2000864c  pxCurrentTCB                       
+20008680  HCTS_Times                         
+200086a2  Death_Notes                        
+200086ec  songNotes                          
+20008700  songTimes                          
+20008714  Death_Times                        
+20008730  SystemCoreClock                    
+20008734  Task_ADC_Handle                    
+20008738  Task_Buttons_Handle                
+2000873c  Task_Duet_Handle                   
+20008740  player_score                       
+20008744  Task_TimerPoll_Handle              
 2000fe00  __stack                            
 20010000  __STACK_END                        
 4000480c  WDTCTL_SYM                         
@@ -833,4 +841,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                         
 UNDEFED   _system_post_cinit                 
 
-[300 symbols]
+[302 symbols]
