@@ -1,23 +1,26 @@
 #include <task_buzzer.h>
 
 QueueHandle_t Queue_Sound;
-const extern int totalSongs = 6;
+const extern int totalSongs = 7;
 volatile bool playing;
 
-#define W 32
-#define DH 24
-#define H 16
-#define DQ 12
-#define Q 8
-#define DE 6
-#define T 5
-#define E 4
-#define ET 3
-#define S 2
+#define W 96
+#define DH 72
+#define H 48
+#define DQ 36
+#define Q 24
+#define DE 18
+#define T 16
+#define E 12
+#define ET 8
+#define S 6
 
+#define Bb4 466
+#define B4 494
 #define C5 523
 #define Db5 554
 #define D5 587
+#define Eb5 622
 #define E5 659
 #define F5 698
 #define Gb5 740
@@ -38,7 +41,9 @@ volatile bool playing;
 #define A6 1760
 #define Bb6 1865
 #define C7 2093
+#define Db7 2218
 #define D7 2349
+#define Eb7 2490
 #define E7 2637
 
 // Song Format
@@ -83,9 +88,15 @@ uint8_t LoZ_Times[83] = {130, H+DE, S, ET, ET, ET, 2*ET, ET, Q+DE, S, ET, ET, ET
                           Q, DQ, E, S, S, S, S, H, E, E, ET, ET, ET, H, E, E, ET, ET, ET, DE, S, DQ, E, Q, E, S, S, H, E, E, E, S, S, H, E, E,
                           E, S, S, H, Q, E, S, S, E, S, S, E, S, S, E, E};
 
+uint16_t LoZ2_Notes[85] = {85, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Ab5, Ab5, Ab5, Ab5, Ab5, Ab5, Ab5, Ab5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, F5, F5, F5, G5, A5,
+                           Bb5, Bb5, Bb5, Ab5, Bb5, Bb5, Ab5, Ab5, Ab5, Gb5, Ab5, Ab5, Gb5, Gb5, Gb5, E5, Gb5, Gb5, Db6, Db6, Db6, B5, Db6, Db6,
+                           B5, B5, B5, Bb5, B5, B5, B5, B5, Bb5, Bb5, Bb5, Ab5, Bb5, Bb5, Bb5, Bb5, C6, C6, C6, C6, C6, C6, C6, C6, F5, F5, F5, F5, F5, G5, A5};
+uint8_t LoZ2_Times[85] = {130, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, Q, Q, E, E, Q, T, T, T, Q, Q, Q, T, T, T, Q, Q,
+                          Q, T, T, T, Q, Q, Q, T, T, T, Q, Q, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, E, E};
 
-uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, FGM2_Notes, BQ_Notes, LoZ_Notes};
-uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, FGM2_Times, BQ_Times, LoZ_Times};
+
+uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, FGM2_Notes, BQ_Notes, LoZ_Notes, LoZ2_Notes};
+uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, FGM2_Times, BQ_Times, LoZ_Times, LoZ2_Times};
 
 
 /**
@@ -139,7 +150,7 @@ void playSong(int songNum) {
     uint16_t* notes = songNotes[songNum];
     uint8_t* times = songTimes[songNum];
     size_t length = notes[0];
-    TickType_t noteInterval = 60000 / (times[0] << 3);
+    TickType_t noteInterval = 20000 / (times[0] << 3);
     set_pin(0);
     int i;
     for (i = 1; i < length; i++) {
