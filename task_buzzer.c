@@ -1,15 +1,19 @@
 #include <task_buzzer.h>
 
 QueueHandle_t Queue_Sound;
-const extern int totalSongs = 5;
+const extern int totalSongs = 6;
 volatile bool playing;
 
-#define Q 8
-#define E 4
-#define DQ 12
+#define W 32
+#define DH 24
 #define H 16
-#define S 2
+#define DQ 12
+#define Q 8
+#define DE 6
 #define T 5
+#define E 4
+#define ET 3
+#define S 2
 
 #define C5 523
 #define Db5 554
@@ -30,6 +34,7 @@ volatile bool playing;
 #define F6 1397
 #define Gb6 1480
 #define G6 1568
+#define Ab6 1662
 #define A6 1760
 #define Bb6 1865
 #define C7 2093
@@ -70,9 +75,18 @@ uint8_t BQ_Times[171] = {200, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, 
                          E, E, Q, Q, Q, Q, 2*Q, Q, E, E, E, E, E, E, Q, Q, Q, DQ + S, S, E, E, E, E, Q, Q, Q, Q, E, DQ, E, Q, E, Q, DQ, E, DQ, E, Q, Q, E, Q, S, Q, E, Q, E, E, Q, Q, E, Q, Q, Q, Q, Q, Q, E, E, E, E + S, S,
                          Q, E, E, E, Q, Q, E, Q, Q, Q, Q, E, Q, Q, Q, Q, E, Q, E, Q, E, Q, Q, Q, S, S, DQ, E, Q, E, E, Q, Q, Q, E, Q, Q + S, S, Q, Q, Q, E, E, E, E, E, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, H, E, 2*Q, Q, E, E, E, Q};
 
+// LoZ Theme
+uint16_t LoZ_Notes[83] = {83, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Ab5, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Ab5, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, F5, F5, F5, F5, F5, F5, F5, F5, F5, F5,
+                          Bb5, F5, Bb5, Bb5, C6, D6, Eb6, F6, 0, F6, F6, Gb6, Ab6, Bb6, 0, Bb6, Bb6, Ab6, Gb6, Ab6, Gb6, F6, 0, F6, Eb6, Eb6, F6, Gb6, F6, Eb6, Db6, Db6, Eb6, F6, Eb6, Db6,
+                          C6, C6, D6, E6, G6, F6, F5, F5, F5, F5, F5, F5, F5, F5, F5, F5};
+uint8_t LoZ_Times[83] = {130, H+DE, S, ET, ET, ET, 2*ET, ET, Q+DE, S, ET, ET, ET, 2*ET, ET, Q+DE, S, ET, ET, ET, E, S, S, E, S, S, E, S, S, E, E,
+                          Q, DQ, E, S, S, S, S, H, E, E, ET, ET, ET, H, E, E, ET, ET, ET, DE, S, DQ, E, Q, E, S, S, H, E, E, E, S, S, H, E, E,
+                          E, S, S, H, Q, E, S, S, E, S, S, E, S, S, E, E};
 
-uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, FGM2_Notes, BQ_Notes};
-uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, FGM2_Times, BQ_Times};
+
+uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, FGM2_Notes, BQ_Notes, LoZ_Notes};
+uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, FGM2_Times, BQ_Times, LoZ_Times};
+
 
 /**
  * Initializes buzzer
