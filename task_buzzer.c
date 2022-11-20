@@ -1,7 +1,7 @@
 #include <task_buzzer.h>
 
 QueueHandle_t Queue_Sound;
-const extern int totalSongs = 7;
+const extern int totalSongs = 9;
 volatile bool playing;
 
 #define W 96
@@ -91,12 +91,46 @@ uint8_t LoZ_Times[83] = {130, H+DE, S, ET, ET, ET, 2*ET, ET, Q+DE, S, ET, ET, ET
 uint16_t LoZ2_Notes[85] = {85, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Bb5, Ab5, Ab5, Ab5, Ab5, Ab5, Ab5, Ab5, Ab5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, F5, F5, F5, G5, A5,
                            Bb5, Bb5, Bb5, Ab5, Bb5, Bb5, Ab5, Ab5, Ab5, Gb5, Ab5, Ab5, Gb5, Gb5, Gb5, E5, Gb5, Gb5, Db6, Db6, Db6, B5, Db6, Db6,
                            B5, B5, B5, Bb5, B5, B5, B5, B5, Bb5, Bb5, Bb5, Ab5, Bb5, Bb5, Bb5, Bb5, C6, C6, C6, C6, C6, C6, C6, C6, F5, F5, F5, F5, F5, G5, A5};
-uint8_t LoZ2_Times[85] = {130, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, Q, Q, E, E, Q, T, T, T, Q, Q, Q, T, T, T, Q, Q,
-                          Q, T, T, T, Q, Q, Q, T, T, T, Q, Q, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, T, T, T, Q, E, E};
+uint8_t LoZ2_Times[85] = {130, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, Q, Q, E, E, Q, ET, ET, ET, Q, Q, Q, ET, ET, ET, Q, Q,
+                          Q, ET, ET, ET, Q, Q, Q, ET, ET, ET, Q, Q, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, ET, ET, ET, Q, E, E};
+
+uint16_t Mega_Notes[209] = {209, D5, D5, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5, C5, C5, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5,
+                           B4, B4, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5, Bb4, Bb4, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5,
+                           D5, D5, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5, C5, C5, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5,
+                           B4, B4, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5, Bb4, Bb4, D6, A5, 0, Ab5, 0, G5, 0, F5, D5, F5, G5,
+                           D6, D6, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6, C6, C6, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6,
+                           B5, B5, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6, Bb5, Bb5, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6,
+                           D6, D6, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6, C6, C6, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6,
+                           B5, B5, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6, Bb5, Bb5, D7, A6, 0, Ab6, 0, G6, 0, F6, D6, F6, G6};
+
+uint8_t Mega_Times[209] = {120, S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S,
+                          S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S,
+                          S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S,
+                          S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S,
+                          S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S,
+                          S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S,
+                          S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S,
+                          S, S, E, E, S, S, S, S, S, E, S, S, S, S, S, E, E, S, S, S, S, S, E, S, S, S};
+
+uint16_t Mega2_Notes[161] = {161, 0, 0, 0, 0,
+                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5};
+
+uint8_t Mega2_Times[161] = {120, W, W, W, W,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E};
 
 
-uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, FGM2_Notes, BQ_Notes, LoZ_Notes, LoZ2_Notes};
-uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, FGM2_Times, BQ_Times, LoZ_Times, LoZ2_Times};
+uint16_t* songNotes[] = {Death_Notes, HCTS_Notes, FGM_Notes, FGM2_Notes, BQ_Notes, LoZ_Notes, LoZ2_Notes, Mega_Notes, Mega2_Notes};
+uint8_t* songTimes[] = {Death_Times, HCTS_Times, FGM_Times, FGM2_Times, BQ_Times, LoZ_Times, LoZ2_Times, Mega_Times, Mega2_Times};
 
 
 /**
