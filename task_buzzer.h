@@ -8,9 +8,9 @@
 
 /* RTOS header files */
 #include <FreeRTOS.h>
+#include <inputs/include/duet.h>
 #include <task.h>
 #include <queue.h>
-#include "task_duet.h"
 
 extern QueueHandle_t Queue_Sound;
 const extern int totalSongs;

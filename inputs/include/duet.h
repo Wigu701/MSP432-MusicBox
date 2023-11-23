@@ -2,21 +2,18 @@
 #define TASK_DUET__
 
 #include "msp.h"
+#include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
 
 /* RTOS header files */
 #include <FreeRTOS.h>
 #include <task.h>
 #include <task_buzzer.h>
-#include "enums.h"
+
+#include <inputs/include/enums.h>
+#include <music_player.h>
 
 extern TaskHandle_t Task_Duet_Handle;
-
-/**
- * Sets output pin
- */
-void set_pin(char on);
 
 /**
  * Detects if either button is pressed. If yes, sends message to queue
