@@ -12,10 +12,7 @@
 #include "msp432p401r.h"
 #include <stdint.h>
 #include <stdio.h>
-#include "task_lcd_driver.h"
 #include "enums.h"
-#include "task_lcd_draw.h"
-#include "lcd.h"
 
 /* RTOS header files */
 #include <FreeRTOS.h>
@@ -23,13 +20,11 @@
 #include <semphr.h>
 
 /* Tasks */
+#include <display/include/lcd.h>
 #include <task_buttons.h>
 #include <task_buzzer.h>
 #include <task_timer_polling.h>
 #include <task_duet.h>
-
-
-extern SemaphoreHandle_t Sem_LCD;
 
 
 
