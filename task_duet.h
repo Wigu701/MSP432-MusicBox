@@ -9,7 +9,6 @@
 #include <FreeRTOS.h>
 #include <task.h>
 #include <task_buzzer.h>
-#include "task_lcd_driver.h"
 #include "enums.h"
 
 extern TaskHandle_t Task_Duet_Handle;

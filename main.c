@@ -45,70 +45,74 @@ int main(void)
 {
     WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;     // stop watchdog timer
 
+    initCharacters();
     Crystalfontz128x128_Init();
 
-    Queue_Sound = xQueueCreate(2, sizeof(int));
-    Queue_LCD_Driver = xQueueCreate(1, sizeof(MESSAGE_t));
+    // Queue_Sound = xQueueCreate(2, sizeof(int));
+    // Queue_LCD_Driver = xQueueCreate(1, sizeof(MESSAGE_t));
 
     // Semaphore to make sure that tasks are not trying to draw to the LCD
     // concurrently
     Sem_LCD = xSemaphoreCreateBinary();
     xSemaphoreGive(Sem_LCD);
 
-    xTaskCreate
-    (   Task_buttons,
-        "Button detect",
-        configMINIMAL_STACK_SIZE,
-        NULL,
-        1,
-        &Task_Buttons_Handle
-    );
 
+    lcd_draw_progress(1, 0);
     xTaskCreate
-    (   Task_duet,
-        "Duet signals",
-        configMINIMAL_STACK_SIZE,
-        NULL,
-        1,
-        &Task_Duet_Handle
-    );
-
-
-    xTaskCreate
-    (   Task_pollTimer,
-        "Poll peripherals",
-        configMINIMAL_STACK_SIZE,
-        NULL,
-        1,
-        &Task_TimerPoll_Handle
-    );
-
-    xTaskCreate
-    (   Task_ADC_Logic,
-        "Timer2 Tasks",
+    (   Task_title,
+        "Draw song title on lcd",
         configMINIMAL_STACK_SIZE,
         NULL,
         2,
-        &Task_ADC_Handle
+        &Task_Title_Handle
     );
 
     xTaskCreate
-    (   Task_playSound,
-        "Play Sound",
+    (   Task_author,
+        "Draw song author on lcd",
         configMINIMAL_STACK_SIZE,
         NULL,
-        1,
-        NULL
+        2,
+        &Task_Author_Handle
     );
 
-    xTaskCreate
-    (   Task_LCD_Driver,
-        "LCD Driver", // Processes inputs and outputs
-        configMINIMAL_STACK_SIZE,
-        NULL,
-        1,
-        NULL
-    );
+//    xTaskCreate
+//    (   Task_buttons,
+//        "Button detect",
+//        configMINIMAL_STACK_SIZE,
+//        NULL,
+//        1,
+//        &Task_Buttons_Handle
+//    );
+//
+//    xTaskCreate
+//    (   Task_duet,
+//        "Duet signals",
+//        configMINIMAL_STACK_SIZE,
+//        NULL,
+//        1,
+//        &Task_Duet_Handle
+//    );
+//
+//
+//    xTaskCreate
+//    (   Task_pollTimer,
+//        "Poll peripherals",
+//        configMINIMAL_STACK_SIZE,
+//        NULL,
+//        1,
+//        &Task_TimerPoll_Handle
+//    );
+//
+//    xTaskCreate
+//    (   Task_ADC_Logic,
+//        "Timer2 Tasks",
+//        configMINIMAL_STACK_SIZE,
+//        NULL,
+//        3,
+//        &Task_ADC_Handle
+//    );
+
 
     __enable_irq();
 
