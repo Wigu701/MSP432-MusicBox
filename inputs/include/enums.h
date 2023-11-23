@@ -8,15 +8,15 @@
  *      Author: pnowa
  */
 
-#ifndef ENUMS_H_
-#define ENUMS_H_
+#ifndef __ENUMS_H__
+#define __ENUMS_H__
 
-typedef enum {FLICK, CLICK, IO} ACTION;
-typedef enum {UP, DOWN} DIRECTION;
+typedef enum {FLICK, CLICK, DUET} ACTION;
+typedef enum {UP, DOWN, LEFT, RIGHT} DIRECTION;
 
 typedef struct {
     ACTION action;
     DIRECTION direction;
 } MESSAGE_t;
 
-#endif /* ENUMS_H_ */
+#endif /* __ENUMS_H__ */

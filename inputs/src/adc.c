@@ -1,12 +1,16 @@
-#include <task_adc.h>
-#include "enums.h"
+#include <inputs/include/adc.h>
 
+
+// RTOS Handles
 TaskHandle_t Task_ADC_Handle = NULL;
+TaskHandle_t Task_pollADC_Handle = NULL;
+
+
 // Global variable to transfer ADC results to task
-uint16_t adcReadings[5];
+uint16_t adcReadings[2];
+
 
 // Voltage triggers for each ADC peripheral
-// Joystick
 #define VOLTTRIGGER_JOY_UP ((int)((2.50)/(3.3/4096)))
 #define VOLTTRIGGER_JOY_DOWN ((int)((0.85)/(3.3/4096)))
 
@@ -60,6 +64,21 @@ void initialize_ADC(void) {
     ADC14->CTL0 |= ADC14_CTL0_ON;
 }
 
+
+/**
+ * Polls ADC every 10ms
+ */
+void Task_pollADC(void *pvParameters) {
+    initialize_ADC();
+
+    while (1) {
+        // Sample ADC
+        ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
+
+
 /**
  * Handles logic for ADC data
  */
@@ -81,10 +100,10 @@ void Task_ADC_Logic(void *pvParameters) {
         if (!joyDeviated) {
             if (adcReadings[0] > VOLTTRIGGER_JOY_UP) {
                 joyDeviated = true;
-                dir = UP;
+                dir = LEFT;
             } else if (adcReadings[0] < VOLTTRIGGER_JOY_DOWN) {
                 joyDeviated = true;
-                dir = DOWN;
+                dir = RIGHT;
             } else if (adcReadings[1] > VOLTTRIGGER_JOY_UP) {
                 joyDeviated = true;
                 dir = UP;
@@ -97,11 +116,12 @@ void Task_ADC_Logic(void *pvParameters) {
                 joyDeviated = false;
                 msg.action = FLICK;
                 msg.direction = dir;
-                // xQueueSendToBack(Queue_LCD_Driver, &msg, portMAX_DELAY);
+                xQueueSendToBack(Queue_MusicPlayer_Driver, &msg, portMAX_DELAY);
             }
         }
     }
 }
+
 
 /**
  * Task Handler activating when an ADC conversion finished, stores values
@@ -121,5 +141,4 @@ void ADC14_IRQHandler(void) {
     );
 
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-
 }

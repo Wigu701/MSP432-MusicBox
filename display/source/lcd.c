@@ -1,14 +1,17 @@
 // Based on code by Joe Krachey
 
 #include <display/include/lcd.h>
-#include "stdio.h"
-#include "stdlib.h"
+
 
 // Initialize globals for title and author tasks
 volatile char* titleString = "Can you call this a hotel? I didn't receive a mint on my pillow";
 volatile char* authorString = "Toby Fox";
+
+
+// RTOS objects
 TaskHandle_t Task_Title_Handle = NULL;
 TaskHandle_t Task_Author_Handle = NULL;
+SemaphoreHandle_t Sem_LCD;
 
 
 // LCD Screen Pins
@@ -318,6 +321,12 @@ void Crystalfontz128x128_Init(void)
 
     HAL_LCD_writeCommand(CM_MADCTL);
     HAL_LCD_writeData(CM_MADCTL_MX | CM_MADCTL_MY | CM_MADCTL_BGR);
+
+
+    // Semaphore to make sure that tasks are not trying to draw to the LCD
+    // concurrently
+    Sem_LCD = xSemaphoreCreateBinary();
+    xSemaphoreGive(Sem_LCD);
 }
 
 
@@ -435,6 +444,7 @@ void lcd_draw_text(
   xSemaphoreGive(Sem_LCD);
 }
 
+
 // Builds a bitmap for the string in text
 // Will allocate minimize size memory needed and set bitmap to point at it
 // Bitmap encodes string top down, left to right
@@ -476,7 +486,6 @@ uint16_t buildStringBitmap(char* text, uint8_t** bitmap) {
 
     return width;
 }
-
 
 
 // Draws on top third of screen
@@ -544,6 +553,7 @@ void Task_title(void *pvParameters)
     }
 }
 
+
 // Draws on middle third of screen
 void Task_author(void *pvParameters)
 {
@@ -606,6 +616,7 @@ void Task_author(void *pvParameters)
     }
 }
 
+
 // Draws on bottom third of screen
 void lcd_draw_progress(uint8_t reset, uint8_t increment)
 {
@@ -657,8 +668,3 @@ void lcd_draw_progress(uint8_t reset, uint8_t increment)
     xSemaphoreGive(Sem_LCD);
     return;
 }
-
-
-
-
-

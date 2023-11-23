@@ -1,9 +1,8 @@
-#ifndef _ADC__
-#define _ADC__
+#ifndef __ADC_H__
+#define __ADC_H__
 
 #include "msp.h"
 #include <stdint.h>
-#include <stdio.h>
 #include <stdbool.h>
 
 /* RTOS header files */
@@ -11,12 +10,16 @@
 #include <task.h>
 #include <queue.h>
 
+#include <inputs/include/enums.h>
+#include <music_player.h>
+
 extern TaskHandle_t Task_ADC_Handle;
+extern TaskHandle_t Task_pollADC_Handle;
 
 /**
- * Configures ADC to read joystick and accelerometer
+ * Polls ADC every 10ms
  */
-void initialize_ADC(void);
+void Task_pollADC(void *pvParameters);
 
 /**
  * Contains code to run when ADC interrupt occurs
@@ -28,4 +31,4 @@ void Task_ADC_Logic(void *pvParameters);
  */
 void ADC14_IRQHandler(void);
 
-#endif /* _ADC__ */
+#endif /* __ADC_H__ */

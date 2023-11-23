@@ -6,15 +6,17 @@
 #include "msp.h"
 #include <stdbool.h>
 #include <string.h>
-#include <display/include/screen_characters.h>
 
 /* RTOS header files */
 #include <FreeRTOS.h>
 #include <task.h>
 #include <semphr.h>
 
+#include <display/include/screen_characters.h>
+
+
 // RTOS Globals
-extern SemaphoreHandle_t Sem_LCD;
+extern SemaphoreHandle_t Sem_LCD;       // Created in main since multiple tasks use
 extern TaskHandle_t Task_Title_Handle;
 extern TaskHandle_t Task_Author_Handle;
 
@@ -36,6 +38,7 @@ extern volatile char* authorString;
 #define SCROLL_INTERVAL 2           // Period of text display scroll updates divided by 50ms
 #define SCROLL_DELAY    10          // Additional period of delay of text scroll at start and end divided by 50ms
 #define SCROLL_STEP     5           // How many pixels to shift on each scroll step
+
 
 // Setup for LCD display
 extern void Crystalfontz128x128_Init(void);

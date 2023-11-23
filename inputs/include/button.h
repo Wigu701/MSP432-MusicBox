@@ -1,15 +1,17 @@
-#ifndef TASK_BUTTONS__
-#define TASK_BUTTONS__
+#ifndef __BUTTON_H__
+#define __BUTTON_H__
 
 #include "msp.h"
 #include <stdint.h>
-#include <stdio.h>
+#include <stdbool.h>
 
 /* RTOS header files */
 #include <FreeRTOS.h>
 #include <task.h>
 #include <task_buzzer.h>
-#include "enums.h"
+
+#include <inputs/include/enums.h>
+#include <music_player.h>
 
 extern TaskHandle_t Task_Buttons_Handle;
 
@@ -18,4 +20,4 @@ extern TaskHandle_t Task_Buttons_Handle;
  */
 void Task_buttons(void *pvParameters);
 
-#endif /* TASK_BUTTONS__ */
+#endif /* __BUTTON_H__ */

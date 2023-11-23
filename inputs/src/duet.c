@@ -1,8 +1,8 @@
-#include "task_duet.h"
-#include <stdbool.h>
+#include <inputs/include/duet.h>
 
 
 TaskHandle_t Task_Duet_Handle = NULL;
+
 
 /**
  * Initializes duet pins
@@ -24,6 +24,7 @@ void initialize_pins() {
     //P6->REN |= BIT5;
 }
 
+
 /**
  * Detects if input pin is asserted
  */
@@ -31,6 +32,10 @@ bool detect_pin() {
     return P1->IN & BIT0;
 }
 
+
+/**
+ * Sets output pin to value
+ */
 void set_pin(char on) {
     if (on) {
         P2->OUT |= BIT0;
@@ -50,14 +55,25 @@ void Task_duet(void *pvParameters) {
 
     // Stores information about action for queue
     MESSAGE_t msg;
-    msg.action = IO;
+    msg.action = DUET;
+
+    // Track old reading to send update on change
+    uint8_t old = detect_pin();
 
     while(1)
     {
-        if (detect_pin()) {
-            // Send thing into queue
-            // xQueueSendToBack(Queue_LCD_Driver, &msg, portMAX_DELAY);
+        if (detect_pin() && !old) {
+            old = 1;
+            msg.direction = UP;
+            xQueueSendToBack(Queue_MusicPlayer_Driver, &msg, portMAX_DELAY);
+
+        } else if (!detect_pin() && old) {
+            old = 0;
+            msg.direction = DOWN;
+            xQueueSendToBack(Queue_MusicPlayer_Driver, &msg, portMAX_DELAY);
+
         }
+
         vTaskDelay(pdMS_TO_TICKS(1));
     }
 }

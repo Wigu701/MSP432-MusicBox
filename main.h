@@ -5,14 +5,12 @@
  *      Author: pnowa
  */
 
-#ifndef MAIN_H_
-#define MAIN_H_
+#ifndef __MAIN_H__
+#define __MAIN_H__
 
 #include "msp.h"
 #include "msp432p401r.h"
 #include <stdint.h>
-#include <stdio.h>
-#include "enums.h"
 
 /* RTOS header files */
 #include <FreeRTOS.h>
@@ -21,11 +19,10 @@
 
 /* Tasks */
 #include <display/include/lcd.h>
-#include <task_buttons.h>
-#include <task_buzzer.h>
-#include <task_timer_polling.h>
-#include <task_duet.h>
+#include <inputs/include/adc.h>
+#include <inputs/include/button.h>
+#include <inputs/include/duet.h>
+#include <music_player.h>
 
 
-
-#endif /* MAIN_H_ */
+#endif /* __MAIN_H__ */
