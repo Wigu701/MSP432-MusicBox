@@ -7,11 +7,11 @@
 
 /* RTOS header files */
 #include <FreeRTOS.h>
+#include <inputs/include/input_enums.h>
 #include <task.h>
 #include <queue.h>
 
-#include <inputs/include/enums.h>
-#include <music_player.h>
+#include <outputs/include/music_player.h>
 
 extern TaskHandle_t Task_ADC_Handle;
 extern TaskHandle_t Task_pollADC_Handle;

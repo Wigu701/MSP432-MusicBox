@@ -18,11 +18,12 @@
 #include <semphr.h>
 
 /* Tasks */
-#include <display/include/lcd.h>
 #include <inputs/include/adc.h>
 #include <inputs/include/button.h>
 #include <inputs/include/duet.h>
-#include <music_player.h>
+#include <display/include/lcd.h>
+#include <outputs/include/buzzer.h>
+#include <outputs/include/music_player.h>
 
 
 #endif /* __MAIN_H__ */

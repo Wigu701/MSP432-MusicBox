@@ -8,12 +8,13 @@
 /* RTOS header files */
 #include <FreeRTOS.h>
 #include <task.h>
-#include <task_buzzer.h>
 
-#include <inputs/include/enums.h>
-#include <music_player.h>
+#include <inputs/include/input_enums.h>
+#include <outputs/include/music_player.h>
 
 extern TaskHandle_t Task_Duet_Handle;
+
+void set_pin(char on);
 
 /**
  * Detects if either button is pressed. If yes, sends message to queue

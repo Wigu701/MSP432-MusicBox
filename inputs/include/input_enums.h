@@ -8,8 +8,8 @@
  *      Author: pnowa
  */
 
-#ifndef __ENUMS_H__
-#define __ENUMS_H__
+#ifndef __INPUT_ENUMS_H__
+#define __INPUT_ENUMS_H__
 
 typedef enum {FLICK, CLICK, DUET} ACTION;
 typedef enum {UP, DOWN, LEFT, RIGHT} DIRECTION;
@@ -19,4 +19,4 @@ typedef struct {
     DIRECTION direction;
 } MESSAGE_t;
 
-#endif /* __ENUMS_H__ */
+#endif /* __INPUT_ENUMS_H__ */

@@ -1,11 +1,8 @@
 Todo:
 
 Music Saving:
-Reorganize all formats into single header file
-Reorganize all songs into separate header file
 Look into saving music data in persistent storage
 Application to load into memory from file in menu, remove as well?
-
 
 Music Playing:
 Clean up current implementation (Notes, tempo, interrupt trigger)
