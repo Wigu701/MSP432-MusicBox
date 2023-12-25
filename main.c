@@ -44,10 +44,7 @@ int main(void)
 
     // RTOS queues
     Queue_MusicPlayer_Driver = xQueueCreate(2, sizeof(MESSAGE_t));
-    Queue_Sound = xQueueCreate(2, sizeof(int));
-
-    // Draw empty progress bar
-    lcd_draw_progress(1, 0);
+    Queue_Sound = xQueueCreate(2, sizeof(char));
 
     xTaskCreate
     (   Task_title,
@@ -99,10 +96,9 @@ int main(void)
         "Duet signals",
         configMINIMAL_STACK_SIZE,
         NULL,
-        1,
+        2,
         &Task_Duet_Handle
     );
-
 
     __enable_irq();
 

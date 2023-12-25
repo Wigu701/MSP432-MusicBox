@@ -8,10 +8,9 @@
 /* RTOS header files */
 #include <FreeRTOS.h>
 #include <task.h>
-#include <task_buzzer.h>
 
-#include <inputs/include/enums.h>
-#include <music_player.h>
+#include <inputs/include/input_enums.h>
+#include <outputs/include/music_player.h>
 
 extern TaskHandle_t Task_Buttons_Handle;
 
