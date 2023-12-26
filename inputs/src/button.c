@@ -88,7 +88,7 @@ void Task_buttons(void *pvParameters) {
             reset_button1 = 1;
         }
 
-        if (debounce_state_button1 == 2) {
+        if (debounce_state_button2 == 0) {
             reset_button2 = 1;
         }
 

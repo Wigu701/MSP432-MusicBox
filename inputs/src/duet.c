@@ -20,8 +20,8 @@ void initialize_pins() {
     P1->REN |= BIT0;
     P1->OUT &= ~BIT0;
 
-    // Rising edge interrupt
-    P1->IES &= ~BIT0;
+    // Falling edge interrupt
+    P1->IES |= BIT0;
     P1->IE |= BIT0;
 
     // Turn on interrupt handler
@@ -64,7 +64,7 @@ void Task_duet(void *pvParameters) {
     while(1)
     {
         msg.direction = UP;
-        while (P1->IN &= BIT0 == 0) vTaskDelay(pdMS_TO_TICKS(1));
+        while ((P1->IN & BIT0) == 0) vTaskDelay(pdMS_TO_TICKS(1));
         xQueueSendToBack(Queue_MusicPlayer_Driver, &msg, portMAX_DELAY);
 
         // Wait for interrupt on falling edge
@@ -79,8 +79,10 @@ void Task_duet(void *pvParameters) {
  * Interrupt handler for input P1.0
  */
 void PORT1_IRQHandler(void) {
+    BaseType_t xHigherPriorityTaskWoken;
+
     // If from P1.0, queue task which will trigger duet play
-    if (P1->IFG &= 0x1) {
+    if (P1->IFG & 0x1) {
         vTaskNotifyGiveFromISR(
             Task_Duet_Handle,
             &xHigherPriorityTaskWoken
