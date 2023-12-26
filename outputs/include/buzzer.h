@@ -11,11 +11,12 @@
 #include <task.h>
 #include <queue.h>
 
-#include <display/include/lcd>
+#include <display/include/lcd.h>
 #include <inputs/include/duet.h>
 #include <outputs/include/music_enums.h>
 #include <outputs/include/songs.h>
 
+#define SWITCHING_INTERVAL 10
 
 extern QueueHandle_t Queue_Sound;
 

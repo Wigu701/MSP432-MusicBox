@@ -529,7 +529,6 @@ void Task_title(void *pvParameters)
                     if (horOffset >= titleWidth - MIN_TEXT_LENGTH + SCROLL_STEP) {
                         horOffset = 0;
                         scrollDelay = -SCROLL_DELAY;
-                        lcd_draw_progress(1, 0);
 
                     // If end reached, double delay before reset
                     } else if (horOffset >= titleWidth - MIN_TEXT_LENGTH) {
@@ -547,7 +546,6 @@ void Task_title(void *pvParameters)
                 }
             }
         }
-        lcd_draw_progress(0, 1);
 
         vTaskDelay(pdMS_TO_TICKS(50));
     }

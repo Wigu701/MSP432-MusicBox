@@ -7,7 +7,7 @@ TaskHandle_t Task_pollADC_Handle = NULL;
 
 
 // Global variable to transfer ADC results to task
-uint16_t adcReadings[2];
+volatile uint16_t adcReadings[2];
 
 
 // Voltage triggers for each ADC peripheral
@@ -89,7 +89,10 @@ void Task_ADC_Logic(void *pvParameters) {
     bool joyDeviated = false;
 
     // Variables to store information about input to be sent to queue
-    MESSAGE_t msg;
+    MESSAGE_t msg = {
+        .action = FLICK,
+        .direction = DOWN
+    };
     DIRECTION dir;
 
     while (1) {
@@ -100,10 +103,10 @@ void Task_ADC_Logic(void *pvParameters) {
         if (!joyDeviated) {
             if (adcReadings[0] > VOLTTRIGGER_JOY_UP) {
                 joyDeviated = true;
-                dir = LEFT;
+                dir = RIGHT;
             } else if (adcReadings[0] < VOLTTRIGGER_JOY_DOWN) {
                 joyDeviated = true;
-                dir = RIGHT;
+                dir = LEFT;
             } else if (adcReadings[1] > VOLTTRIGGER_JOY_UP) {
                 joyDeviated = true;
                 dir = UP;
@@ -114,7 +117,6 @@ void Task_ADC_Logic(void *pvParameters) {
         } else {
             if (adcReadings[0] < VOLTTRIGGER_JOY_UP && adcReadings[0] > VOLTTRIGGER_JOY_DOWN && adcReadings[1] < VOLTTRIGGER_JOY_UP && adcReadings[1] > VOLTTRIGGER_JOY_DOWN) {
                 joyDeviated = false;
-                msg.action = FLICK;
                 msg.direction = dir;
                 xQueueSendToBack(Queue_MusicPlayer_Driver, &msg, portMAX_DELAY);
             }

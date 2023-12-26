@@ -3,7 +3,7 @@
 
 #include <outputs/include/music_enums.h>
 
-#define TOTAL_SONGS 9
+#define TOTAL_SONGS 6
 
 /**
  * 0 - Mario Death
@@ -17,8 +17,6 @@
  * 8 - Megalovania 2
  */
 extern Song_Data songs[TOTAL_SONGS];
-
-
 
 
 #endif // __SONGS_H__

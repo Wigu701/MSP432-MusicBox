@@ -1,5 +1,6 @@
 #include <outputs/include/buzzer.h>
 
+
 QueueHandle_t Queue_Sound;
 
 /**
@@ -49,47 +50,19 @@ void turn_off(void) {
     TIMER_A0->CTL &= ~TIMER_A_CTL_MC_MASK;
 }
 
-void playSong(int songNum) {
-//    uint16_t* notes = songNotes[songNum];
-//    uint8_t* times = songTimes[songNum];
-//    size_t length = notes[0];
-//    TickType_t noteInterval = 20000 / (times[0] << 3);
-//    set_pin(0);
-//    int i;
-//    for (i = 1; i < length; i++) {
-//        if (notes[i] == 0) {
-//            turn_off();
-//            vTaskDelay(pdMS_TO_TICKS(times[i] * noteInterval));
-//        } else {
-//            play_note(SystemCoreClock / notes[i]);
-//            vTaskDelay(pdMS_TO_TICKS(times[i] * noteInterval));
-//        }
-//    }
-//    turn_off();
-}
 
 void Task_playSong(void *pvParameters) {
-    int i;
+    int i, songSel;
     char curTrack;
-    uint16_t lastNote;
+    uint16_t lastNote, curNote;
     uint16_t curTrackIndexes[MAX_TRACKS];
-    uint8_t trackNoteDurations[MAX_TRACKS];
-    initialize_buzzer();
-    char songSel;
+    uint16_t trackNoteDurations[MAX_TRACKS];
+    uint32_t totalSongLength, progressUpdateInterval, curProgress;
 
+    initialize_buzzer();
     lcd_draw_progress(1, 0);
 
     while (1) {
-        // Wait for prompt to play song. change type to char
-        // If in range and no song playing, start playing song
-        // If multi track, switch between each at some interval
-        // If not multi track, have delays be that of single track instead
-        // While waiting for each note/interval, check if new command in queue for stop/play other song
-        // Will have stop be -1, play other song just be new number
-        // issue progress bar updates periodically
-
-        // Else print error message
-
         // Wait for buzzer prompt from UI
         // negative value indicates stop playing
         // positive value in range will play that song
@@ -97,39 +70,63 @@ void Task_playSong(void *pvParameters) {
         xQueueReceive(Queue_Sound, &songSel, portMAX_DELAY);
 
 songInterrupt:
+        // If song is valid, load it from storage and trigger duet device if present to also start setup
         if (songSel < 0 || songSel >= TOTAL_SONGS) continue;
-        Song_Data* curSong = songs + songSel;
+        Song_Data curSong = songs[songSel];
         set_pin(1);
+        lcd_draw_progress(1, 0);
 
-        uint32_t totalSongLength = 0;
-        for (i = 0; i < curSong->length[0]; i++) {
-            totalSongLength += curSong->durations[0][i];
+        // Find the length of the song for playing and updating progress bar
+        TickType_t noteInterval = 2500 / curSong.tempo; // Quarter note is 24 units, adjustment for tempo is 1000(ms) / 60 (since tempo in bpm) / 24 (quarter note) = 2500
+        totalSongLength = 0;
+        for (i = 0; i < curSong.length[0]; i++) {
+            totalSongLength += curSong.durations[0][i];
         }
-        uint32_t progressUpdateInterval = totalSongLength / 100;
+        totalSongLength *= noteInterval;
+        progressUpdateInterval = totalSongLength / 100;
 
+        // Reset tracking variables for playing
+        curProgress = 0;
         curTrack = 0;
         memset(curTrackIndexes, 0, MAX_TRACKS * sizeof(uint16_t));
-        TickType_t noteInterval = 2500 / curSong->tempo;
-        for (i = 0; i < totalSongLength; i++) {
-            if (trackNoteDurations[curTrack] >= curSong->durations[curTrack][curTrackIndexes[curTrack]]) {
-                trackNoteDurations[curTrack] -= curSong->durations[curTrack][curTrackIndexes[curTrack]];
+        memset(trackNoteDurations, 0, MAX_TRACKS * sizeof(uint16_t));
+
+        // Loop plays through song at 1ms update intervals, rotating through tracks
+        for (i = 0; i < totalSongLength; i += SWITCHING_INTERVAL) {
+
+            // For current note on track, see how long it should be played
+            uint32_t curNoteLength = curSong.durations[curTrack][curTrackIndexes[curTrack]] * noteInterval;
+
+            // If it has been played for proper duration, move to next note
+            if (trackNoteDurations[curTrack] >= curNoteLength) {
+                trackNoteDurations[curTrack] -= curNoteLength;
                 curTrackIndexes[curTrack] += 1;
             }
-            curNote = curSong->notes[curTrack][curTrackIndexes[curTrack]];
+
+            // If next note differs from last one, update PWM output
+            curNote = curSong.notes[curTrack][curTrackIndexes[curTrack]];
             if (curNote != lastNote) {
                 if (curNote == 0) {
                     turn_off();
                 } else {
-                    play_note(SystemCoreClock / notes[i]);
+                    play_note(SystemCoreClock / curNote);
                 }
             }
 
-            trackNoteDurations[curTrack] += curSong->tracks;
-            curTrack = (curTrack + 1) % curSong->tracks;
+            // Update song progress for track and progress bar
+            curProgress += SWITCHING_INTERVAL;
+            if (curProgress >= progressUpdateInterval) {
+                lcd_draw_progress(0, 1);
+                curProgress = 0;
+            }
+            trackNoteDurations[curTrack] += curSong.tracks * SWITCHING_INTERVAL;
+
+            // Move to next track for next loop
+            curTrack = (curTrack + 1) % curSong.tracks;
             lastNote = curNote;
 
-            // Check if any new commands while note playing. If yes, stop and process
-            if (xQueueReceive(Queue_Sound, &songSel, pdMS_TO_TICKS(1)) == pdTRUE) {
+            // Let note play. If new command comes in, stop and run next
+            if (xQueueReceive(Queue_Sound, &songSel, pdMS_TO_TICKS(SWITCHING_INTERVAL)) == pdTRUE) {
                 turn_off();
                 set_pin(0);
                 goto songInterrupt;

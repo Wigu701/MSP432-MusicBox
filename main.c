@@ -44,7 +44,7 @@ int main(void)
 
     // RTOS queues
     Queue_MusicPlayer_Driver = xQueueCreate(2, sizeof(MESSAGE_t));
-    Queue_Sound = xQueueCreate(2, sizeof(char));
+    Queue_Sound = xQueueCreate(2, sizeof(int));
 
     xTaskCreate
     (   Task_title,
@@ -98,6 +98,25 @@ int main(void)
         NULL,
         2,
         &Task_Duet_Handle
+    );
+
+
+    xTaskCreate
+    (   Task_musicPlayer,
+        "Music player",
+        configMINIMAL_STACK_SIZE,
+        NULL,
+        1,
+        NULL
+    );
+
+    xTaskCreate
+    (   Task_playSong,
+        "Buzzer control",
+        configMINIMAL_STACK_SIZE,
+        NULL,
+        1,
+        NULL
     );
 
     __enable_irq();

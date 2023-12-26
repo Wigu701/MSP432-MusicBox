@@ -53,9 +53,9 @@
 typedef struct Song_Data {
     char* title;            // Name of song
     char* author;           // Composer/artist name
-    uint16_t* notes[];      // Pointers to note tracks
-    uint8_t* durations[];   // Pointers to durations for each note track
-    uint16_t length[];      // Length of notes arrays
+    uint16_t** notes;      // Pointers to note tracks
+    uint8_t** durations;   // Pointers to durations for each note track
+    uint16_t* length;      // Length of notes arrays
     uint8_t tempo;          // Tempo for notes
     uint8_t tracks;         // How many different tracks in notes/duration arrays.
                             // Should be less than MAX_TRACKs macro above
