@@ -649,16 +649,16 @@ void lcd_draw_progress(uint8_t reset, uint8_t increment)
 
         xSemaphoreTake(Sem_LCD, portMAX_DELAY);
         // Draw vertical start and end boundaries
-        Crystalfontz128x128_SetDrawFrame(10, 110, 12, 116);
+        Crystalfontz128x128_SetDrawFrame(10, PBAR_HORIZ_COORD + 2, 12, PBAR_HORIZ_COORD + 6);
         HAL_LCD_writeCommand(CM_RAMWR);
         for (i = 0; i < 21; i++)  HAL_LCD_writeData_16(DISPLAY_TEXT_COLOR);
 
-        Crystalfontz128x128_SetDrawFrame(119, 110, 121, 116);
+        Crystalfontz128x128_SetDrawFrame(119, PBAR_HORIZ_COORD + 2, 121, PBAR_HORIZ_COORD + 6);
         HAL_LCD_writeCommand(CM_RAMWR);
         for (i = 0; i < 21; i++)  HAL_LCD_writeData_16(DISPLAY_TEXT_COLOR);
 
         // Draw horizontal line
-        Crystalfontz128x128_SetDrawFrame(13, 115, 118, 116);
+        Crystalfontz128x128_SetDrawFrame(13, PBAR_HORIZ_COORD + 5, 118, PBAR_HORIZ_COORD + 6);
         HAL_LCD_writeCommand(CM_RAMWR);
         for (i = 0; i < 212; i++)  HAL_LCD_writeData_16(DISPLAY_TEXT_COLOR);
 
@@ -679,7 +679,7 @@ void lcd_draw_progress(uint8_t reset, uint8_t increment)
     xSemaphoreTake(Sem_LCD, portMAX_DELAY);
 
     // Change all to blue
-    Crystalfontz128x128_SetDrawFrame(leftBound, 105, rightBound, 115);
+    Crystalfontz128x128_SetDrawFrame(leftBound, PBAR_HORIZ_COORD - 6, rightBound, PBAR_HORIZ_COORD + 4);
     HAL_LCD_writeCommand(CM_RAMWR);
     for (i = 0; i < totalPixels; i++)  HAL_LCD_writeData_16(LCD_COLOR_BLUE2);
 
