@@ -100,11 +100,10 @@ uint8_t Mega2_Times[160] = {W, W, W, W,
 uint16_t* Mega_Notes[2] = {Mega1_Notes, Mega2_Notes};
 uint8_t* Mega_Times[2] = {Mega1_Times, Mega2_Times};
 
-
 // Conslidated array
 Song_Data songs[TOTAL_SONGS] = {
     {
-        .title = "0. Mario Death",
+        .title = "1: Mario Death",
         .author = "Guy at Nintendo",
         .notes = (uint16_t**)Death_Notes,
         .durations = (uint8_t**)Death_Times,
@@ -113,7 +112,7 @@ Song_Data songs[TOTAL_SONGS] = {
         .tracks = 1
     },
     {
-        .title = "1. Here Comes the Sun",
+        .title = "2: Here Comes the Sun",
         .author = "The Beatles",
         .notes = (uint16_t**)HCTS_Notes,
         .durations = (uint8_t**)HCTS_Times,
@@ -122,7 +121,7 @@ Song_Data songs[TOTAL_SONGS] = {
         .tracks = 1
     },
     {
-        .title = "2. Fugue in G Minor",
+        .title = "3: Fugue in G Minor",
         .author = "Johann Bach",
         .notes = (uint16_t**)FGM_Notes,
         .durations = (uint8_t**)FGM_Times,
@@ -131,7 +130,7 @@ Song_Data songs[TOTAL_SONGS] = {
         .tracks = 2
     },
     {
-        .title = "3. Brody Quest",
+        .title = "4: Brody Quest",
         .author = "Lemon Demon",
         .notes = (uint16_t**)BQ_Notes,
         .durations = (uint8_t**)BQ_Times,
@@ -140,7 +139,7 @@ Song_Data songs[TOTAL_SONGS] = {
         .tracks = 1
     },
     {
-        .title = "4. The Legend of Zelda Main Theme",
+        .title = "5: The Legend of Zelda Main Theme",
         .author = "Koji Kondo",
         .notes = (uint16_t**)LoZ_Notes,
         .durations = (uint8_t**)LoZ_Times,
@@ -149,7 +148,7 @@ Song_Data songs[TOTAL_SONGS] = {
         .tracks = 2
     },
     {
-        .title = "5. Megalovania",
+        .title = "6: Megalovania",
         .author = "Toby Fox",
         .notes = (uint16_t**)Mega_Notes,
         .durations = (uint8_t**)Mega_Times,

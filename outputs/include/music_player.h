@@ -2,6 +2,8 @@
 #define __MUSIC_PLAYER_H__
 
 
+#include <string.h>
+
 /* RTOS header files */
 #include <FreeRTOS.h>
 #include <inputs/include/input_enums.h>

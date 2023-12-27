@@ -6,11 +6,12 @@
 // Initialize globals for title and author tasks
 volatile char* titleString = "Can you call this a hotel? I didn't receive a mint on my pillow";
 volatile char* authorString = "Toby Fox";
-
+volatile int trackNum = 0;
 
 // RTOS objects
 TaskHandle_t Task_Title_Handle = NULL;
 TaskHandle_t Task_Author_Handle = NULL;
+TaskHandle_t Task_Track_Handle = NULL;
 SemaphoreHandle_t Sem_LCD;
 
 
@@ -501,7 +502,7 @@ void Task_title(void *pvParameters)
         // If no title, wait for 100ms before checking again
         if (titleString == NULL) {
             // Clear current title if present
-            lcd_draw_rectangle(CENTER_THIRD_COORD, TOP_THIRD_COORD, 132, 21, DISPLAY_BACK_COLOR);
+            lcd_draw_rectangle(CENTER_THIRD_COORD, TITLE_HORIZ_COORD, 132, 21, DISPLAY_BACK_COLOR);
             vTaskDelay(pdMS_TO_TICKS(100));
             continue;
 
@@ -513,7 +514,7 @@ void Task_title(void *pvParameters)
             horOffset = 0;
 
             // Draw update
-            lcd_draw_text(CENTER_THIRD_COORD, TOP_THIRD_COORD, titleBitmap, horOffset,
+            lcd_draw_text(CENTER_THIRD_COORD, TITLE_HORIZ_COORD, titleBitmap, horOffset,
                            DISPLAY_TEXT_COLOR, DISPLAY_BACK_COLOR);
 
         // Title still the same, scroll if title is too long to display
@@ -541,7 +542,7 @@ void Task_title(void *pvParameters)
                     }
 
                     // Draw update
-                    lcd_draw_text(CENTER_THIRD_COORD, TOP_THIRD_COORD, titleBitmap, horOffset,
+                    lcd_draw_text(CENTER_THIRD_COORD, TITLE_HORIZ_COORD, titleBitmap, horOffset,
                                    DISPLAY_TEXT_COLOR, DISPLAY_BACK_COLOR);
                 }
             }
@@ -565,7 +566,7 @@ void Task_author(void *pvParameters)
         // If no author, wait for 100ms before checking again
         if (authorString == NULL) {
             // Clear current author if present
-            lcd_draw_rectangle(CENTER_THIRD_COORD, MID_THIRD_COORD, 132, 21, DISPLAY_BACK_COLOR);
+            lcd_draw_rectangle(CENTER_THIRD_COORD, AUTHOR_HORIZ_COORD, 132, 21, DISPLAY_BACK_COLOR);
             vTaskDelay(pdMS_TO_TICKS(100));
             continue;
 
@@ -577,7 +578,7 @@ void Task_author(void *pvParameters)
             horOffset = 0;
 
             // Draw update
-            lcd_draw_text(CENTER_THIRD_COORD, MID_THIRD_COORD, authorBitmap, horOffset,
+            lcd_draw_text(CENTER_THIRD_COORD, AUTHOR_HORIZ_COORD, authorBitmap, horOffset,
                            DISPLAY_TEXT_COLOR, DISPLAY_BACK_COLOR);
 
         // Author still the same, scroll if author is too long to display
@@ -604,13 +605,32 @@ void Task_author(void *pvParameters)
                     }
 
                     // Draw update
-                    lcd_draw_text(CENTER_THIRD_COORD, MID_THIRD_COORD, authorBitmap, horOffset,
+                    lcd_draw_text(CENTER_THIRD_COORD, AUTHOR_HORIZ_COORD, authorBitmap, horOffset,
                                    DISPLAY_TEXT_COLOR, DISPLAY_BACK_COLOR);
                 }
             }
         }
 
         vTaskDelay(pdMS_TO_TICKS(50));
+    }
+}
+
+extern void Task_track(void *pvParameters) {
+    // Characters in index 7 will be used for display
+    char trackString[] = "Track:  ";
+    int oldNum = -1;
+
+    uint8_t* textBitmap = NULL;
+
+    while (1) {
+        vTaskDelay(pdMS_TO_TICKS(50));
+        if (trackNum == oldNum) continue;
+
+        trackString[7] = trackNum + '0';
+        oldNum = trackNum;
+        buildStringBitmap(trackString, &textBitmap);
+        lcd_draw_text(CENTER_THIRD_COORD, TRACK_HORIZ_COORD, textBitmap, 0,
+                       DISPLAY_TEXT_COLOR, DISPLAY_BACK_COLOR);
     }
 }
 
@@ -625,7 +645,7 @@ void lcd_draw_progress(uint8_t reset, uint8_t increment)
 
     if (reset) {
         // Clear current bar
-        lcd_draw_rectangle(CENTER_THIRD_COORD, BOT_THIRD_COORD, 110, 12, DISPLAY_BACK_COLOR);
+        lcd_draw_rectangle(CENTER_THIRD_COORD, PBAR_HORIZ_COORD, 110, 12, DISPLAY_BACK_COLOR);
 
         xSemaphoreTake(Sem_LCD, portMAX_DELAY);
         // Draw vertical start and end boundaries
