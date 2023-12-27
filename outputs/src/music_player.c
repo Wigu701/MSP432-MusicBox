@@ -19,14 +19,14 @@ void Task_musicPlayer(void *pvParameters) {
         if (command.action == FLICK) {
             switch (command.direction) {
                 case UP:
-                    trackNum = (++trackNum > songs[curSong].tracks + 1) ? 1 : trackNum;
+                    trackNum = (++trackNum > songs[curSong].tracks) ? 0 : trackNum;
                     break;
                 case RIGHT:
                     curSong = (curSong + 1) % TOTAL_SONGS;
                     trackNum = 1;
                     break;
                 case DOWN:
-                    trackNum = (--trackNum) < 1 ? songs[curSong].tracks + 1 : trackNum;
+                    trackNum = (--trackNum) < 0 ? songs[curSong].tracks : trackNum;
                     break;
                 case LEFT:
                     curSong = (--curSong) < 0 ? TOTAL_SONGS - 1 : curSong;

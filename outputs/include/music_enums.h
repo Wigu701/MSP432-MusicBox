@@ -41,6 +41,7 @@
 #define Ab6 1662
 #define A6 1760
 #define Bb6 1865
+#define B6 1976
 #define C7 2093
 #define Db7 2218
 #define D7 2349

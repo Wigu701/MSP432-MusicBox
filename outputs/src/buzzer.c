@@ -27,10 +27,10 @@ void play_note(uint32_t note_frequency) {
     float attenuatingFactor = 0.2;
     if (note_frequency > 2300) {
         attenuatingFactor = 0.1;
-    } else if (note_frequency == Bb6) {
+    } else if (note_frequency == Bb6 || note_frequency == B6) {
         attenuatingFactor = 0.5;
     } else if (note_frequency == Gb6) {
-        attenuatingFactor = 0.04;
+        attenuatingFactor = 0.06;
     }
 
 
@@ -105,7 +105,7 @@ songInterrupt:
         // Reset tracking variables for playing
         curProgress = 0;
         // If trackSel is equal to total number of tracks, rotate. Else will play only that track
-        curTrack = (trackSel > curSong.tracks) ? 0 : trackSel - 1;
+        curTrack = (trackSel == 0) ? 0 : trackSel - 1;
         memset(curTrackIndexes, 0, MAX_TRACKS * sizeof(uint16_t));
         memset(trackNoteDurations, 0, MAX_TRACKS * sizeof(uint16_t));
 
@@ -142,7 +142,7 @@ songInterrupt:
 
 
             // Move to next track for next loop if rotate mode
-            if (trackSel > curSong.tracks) {
+            if (trackSel == 0) {
                 curTrack = (curTrack + 1) % curSong.tracks;
                 trackNoteDurations[curTrack] += curSong.tracks * SWITCHING_INTERVAL;
             } else {

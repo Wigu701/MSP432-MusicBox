@@ -33,14 +33,14 @@ uint8_t* FGM_Times[] = {FGM1_Times, FGM2_Times};
 
 
 // Brody Quest
-uint16_t BQ_Length[] = {170};
-uint16_t BQ1_Notes[170] = {C6, C6, C6, A5, G5, C6, E6, F6, Gb6, G6, C6, C6, C6, A5, G5, C6, E6, F6, Gb6, G6, A6, A6, A6, G6, E6, F6, F6, G6, A6, C7, C6, C6, C6, A5, G5, C6, // Chorus
+uint16_t BQ_Length[] = {173};
+uint16_t BQ1_Notes[173] = {C6, C6, C6, A5, G5, C6, 0, E6, F6, Gb6, G6, C6, C6, C6, A5, G5, C6, 0, E6, F6, Gb6, G6, A6, A6, A6, G6, E6, F6, 0, F6, G6, A6, C7, C6, C6, C6, A5, G5, C6, // Chorus
                          G6, A6, C7, D7, E7, C7, G6, 0, G6, A6, G6, F6, E6, 0, F6, E6, D6, C6, 0, C6, D6, E6, D6, C6, A5, C6, E6, 0, F6, E6, D6, D6, E6, C6, A5, G5, E5, D5, C5, D5, E5, 0, // Bridge
                          G5, A5, C6, C6, D6, F6, E6, D6, C6, G6, E6, A6, G6, C7, A6, C7, D7, E7, 0, E7, D7, C7, D7, E7, C7, A6, G6, A6, C7, E6, G6, E6, D6, C6, C6, D6, E6, D6, C6, 0,
                          E5, E5, D5, E5, E6, A6, G6, G6, A6, G6, E6, D6, E6, D6, C6, C6, 0, C6, B5, C6, 0, C6, A5, G5, C5, A5, G5, E5, A5, G5, E5, G5, A5, C6, D6, C6, A5, E5, G5, A5, G5, E5, G5, A5, G5, E5, 0, D5, C5, D5, E5};
-uint8_t BQ1_Times[170] = {Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, DQ, Q, E, E, E, Q, Q, Q, E, E, E,
-                         E, E, Q, Q, Q, Q, 2*Q, Q, E, E, E, E, E, E, Q, Q, Q, DQ + S, S, E, E, E, E, Q, Q, Q, Q, E, DQ, E, Q, E, Q, DQ, E, DQ, E, Q, Q, E, Q, S, Q, E, Q, E, E, Q, Q, E, Q, Q, Q, Q, Q, Q, E, E, E, E + S, S,
-                         Q, E, E, E, Q, Q, E, Q, Q, Q, Q, E, Q, Q, Q, Q, E, Q, E, Q, E, Q, Q, Q, S, S, DQ, E, Q, E, E, Q, Q, Q, E, Q, Q + S, S, Q, Q, Q, E, E, E, E, E, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, H, E, 2*Q, Q, E, E, E, Q};
+uint8_t BQ1_Times[173] = {Q, Q, Q, E, E, Q, E, Q, E, E, E, Q, Q, Q, E, E, Q, E, Q, E, E, E, Q, Q, Q, E, E, Q, E, Q, E, E, E, Q, Q, Q, E, E, E,
+                         E, E, Q, Q, Q, Q, H, Q, E, E, E, E, E, E, Q, Q, Q, DQ + S, S, E, E, E, E, Q, Q, Q, Q, E, Q, E, Q, E, Q, DQ, E, DQ, E, Q, Q, E, DE, S, Q, E, DQ, E, E, Q, Q, E, Q, Q, Q, Q, Q, Q, E, E, E, E + S, S,
+                         Q, E, E, E, Q, Q, E, Q, Q, Q, Q, E, Q, E, Q, Q, E, Q, E, Q, E, Q, Q, Q, S, S, DQ, E, Q, E, E, Q, Q, Q, E, Q, Q + S, S, Q, Q, Q, E, E, E, E, E, E, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, H, E, DQ, Q, E, E, E, Q};
 uint16_t* BQ_Notes[] = {BQ1_Notes};
 uint8_t* BQ_Times[] = {BQ1_Times};
 
@@ -100,11 +100,24 @@ uint8_t Mega2_Times[160] = {W, W, W, W,
 uint16_t* Mega_Notes[2] = {Mega1_Notes, Mega2_Notes};
 uint8_t* Mega_Times[2] = {Mega1_Times, Mega2_Times};
 
+uint16_t SB_Length[] = {116};
+uint16_t SB1_Notes[116] = {Eb6, D6, D6, E6, D6, B5, G5, B5, D6, E6, D6, B5, D6, 0, D6, 0, D6, 0, D6, G6, G6, A6, G6, E6, C6, E6, G6, A6, G6, E6, E6, 0, E6, 0, E6, 0, E6,
+                          D6, D6, E6, D6, B5, G5, B5, D6, E6, D6, B5, D6, 0, D6, 0, D6, 0, D6, G6, G6, A6, G6, E6, C6, E6, G6, A6, G6, E6, E6, 0, E6, 0, E6, 0, E6, 0,
+                          G6, E6, D6, B5, G6, E6, D6, B5, G6, E6, D6, B5, D6, E6, Gb6, G6,
+                          G6, Gb6, G6, E6, D6, G6, D6, B5, A5, B5, A5, G5, A5, B5, G5, G6, A6, B6, A6, 0, B6, G6, 0, D6, G6};
+uint8_t SB1_Times[116] = {H + E, E, ET, ET, ET, ET, ET, ET, ET, ET, ET, Q, E, E, E, E, E, E, 2*ET, ET, ET, ET, ET, ET, ET, ET, ET, ET, ET, Q, 2*ET, ET, 2*ET, ET, 2*ET, ET, 2*ET,
+                         ET, ET, ET, ET, ET, ET, ET, ET, ET, ET, Q, 2*ET, ET, 2*ET, ET, 2*ET, ET, 2*ET, ET, ET, ET, ET, ET, ET, ET, ET, ET, ET, Q, 2*ET ,ET, 2*ET, ET, 2*ET, ET, 2*ET, ET,
+                         Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, H, Q, E,
+                         E, E, S, S, E, E, E, E, ET, ET, ET, 2*ET, ET, Q, Q, ET, ET, ET, ET, ET, ET, ET, ET, ET, ET, E};
+uint16_t* SB_Notes[1] = {SB1_Notes};
+uint8_t* SB_Times[1] = {SB1_Times};
+
+
 // Conslidated array
 Song_Data songs[TOTAL_SONGS] = {
     {
         .title = "1: Mario Death",
-        .author = "Guy at Nintendo",
+        .author = "Koji Kondo",
         .notes = (uint16_t**)Death_Notes,
         .durations = (uint8_t**)Death_Times,
         .length = Death_Length,
@@ -155,5 +168,14 @@ Song_Data songs[TOTAL_SONGS] = {
         .length = Mega_Length,
         .tempo = 120,
         .tracks = 2
+    },
+    {
+         .title = "7: The Spongebob SquarePants Theme Song",
+         .author = "Stephen Hillenburg",
+         .notes = (uint16_t**)SB_Notes,
+         .durations = (uint8_t**)SB_Times,
+         .length = SB_Length,
+         .tempo = 120,
+         .tracks = 1
     }
 };

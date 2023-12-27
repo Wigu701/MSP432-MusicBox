@@ -3,7 +3,7 @@
 
 #include <outputs/include/music_enums.h>
 
-#define TOTAL_SONGS 6
+#define TOTAL_SONGS 7
 
 /**
  * 1 - Mario Death
@@ -12,6 +12,7 @@
  * 4 - Brody Quest
  * 5 - LoZ
  * 6 - Megalovania
+ * 7 - Spongbob
  */
 extern Song_Data songs[TOTAL_SONGS];
 

@@ -617,7 +617,7 @@ void Task_author(void *pvParameters)
 
 extern void Task_track(void *pvParameters) {
     // Characters in index 7 will be used for display
-    char trackString[] = "Track:  ";
+    char trackString[] = "Track:    ";
     int oldNum = -1;
 
     uint8_t* textBitmap = NULL;
@@ -625,8 +625,16 @@ extern void Task_track(void *pvParameters) {
     while (1) {
         vTaskDelay(pdMS_TO_TICKS(50));
         if (trackNum == oldNum) continue;
+        if (trackNum > 0) {
+            trackString[7] = trackNum + '0';
+            trackString[8] = ' ';
+            trackString[9] = ' ';
+        } else {
+            trackString[7] = 'A';
+            trackString[8] = 'l';
+            trackString[9] = 'l';
+        }
 
-        trackString[7] = trackNum + '0';
         oldNum = trackNum;
         buildStringBitmap(trackString, &textBitmap);
         lcd_draw_text(CENTER_THIRD_COORD, TRACK_HORIZ_COORD, textBitmap, 0,
