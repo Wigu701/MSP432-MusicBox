@@ -6,15 +6,12 @@
 #define TOTAL_SONGS 6
 
 /**
- * 0 - Mario Death
- * 1 - Here Comes the Sun
- * 2 - Fugue in G Minor 1
- * 3 - Fugure in G Minor 2
+ * 1 - Mario Death
+ * 2 - Here Comes the Sun
+ * 3 - Fugue in G Minor
  * 4 - Brody Quest
- * 5 - LoZ 1
- * 6 - LoZ 2
- * 7 - Megalovania 1
- * 8 - Megalovania 2
+ * 5 - LoZ
+ * 6 - Megalovania
  */
 extern Song_Data songs[TOTAL_SONGS];
 

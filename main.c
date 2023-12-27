@@ -65,6 +65,15 @@ int main(void)
     );
 
     xTaskCreate
+    (   Task_track,
+        "Draw track on lcd",
+        configMINIMAL_STACK_SIZE,
+        NULL,
+        3,
+        &Task_Track_Handle
+    );
+
+    xTaskCreate
     (   Task_buttons,
         "Buttons detect",
         configMINIMAL_STACK_SIZE,

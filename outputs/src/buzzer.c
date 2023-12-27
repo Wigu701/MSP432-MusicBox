@@ -22,15 +22,27 @@ void initialize_buzzer(void) {
  *
  * Ticks = 24000000 / freq
  */
-void play_note(uint32_t note_period_ticks) {
+void play_note(uint32_t note_frequency) {
+    // Buzzer has large resonance spikes above 2000Hz and around 1500Hz
+    // Will attenuate for volume consistency
+    float attenuatingFactor = 1;
+    if (note_frequency > 2000) {
+        attenuatingFactor = 0.25;
+    } else if (note_frequency > 1450 && note_frequency < 1550) {
+        attenuatingFactor = 0.10;
+    }
+
+
+    uint32_t note_period_ticks = SystemCoreClock / note_frequency;
+
     // Turn off timer
     TIMER_A0->CTL = 0;
 
     // Set TimerA Period
     TIMER_A0->CCR[0] = note_period_ticks - 1;
 
-    // 50% duty cycle
-    TIMER_A0->CCR[4] = (note_period_ticks / 2) - 1;
+    // Duty cycle with attenuation modifier
+    TIMER_A0->CCR[4] = ((float)note_period_ticks * attenuatingFactor / 4) - 1;
 
     // Reset/Set mode
     TIMER_A0->CCTL[4] = TIMER_A_CCTLN_OUTMOD_7;
@@ -52,7 +64,7 @@ void turn_off(void) {
 
 
 void Task_playSong(void *pvParameters) {
-    int i, songSel;
+    int i, songSel, trackSel;
     char curTrack;
     uint16_t lastNote, curNote;
     uint16_t curTrackIndexes[MAX_TRACKS];
@@ -70,6 +82,10 @@ void Task_playSong(void *pvParameters) {
         xQueueReceive(Queue_Sound, &songSel, portMAX_DELAY);
 
 songInterrupt:
+        // Extract track to play and which song from command
+        trackSel = songSel >> TRACK_OFFSET;
+        songSel = songSel & 0xFF;
+
         // If song is valid, load it from storage and trigger duet device if present to also start setup
         if (songSel < 0 || songSel >= TOTAL_SONGS) continue;
         Song_Data curSong = songs[songSel];
@@ -87,7 +103,8 @@ songInterrupt:
 
         // Reset tracking variables for playing
         curProgress = 0;
-        curTrack = 0;
+        // If trackSel is equal to total number of tracks, rotate. Else will play only that track
+        curTrack = (trackSel > curSong.tracks) ? 0 : trackSel - 1;
         memset(curTrackIndexes, 0, MAX_TRACKS * sizeof(uint16_t));
         memset(trackNoteDurations, 0, MAX_TRACKS * sizeof(uint16_t));
 
@@ -99,6 +116,8 @@ songInterrupt:
 
             // If it has been played for proper duration, move to next note
             if (trackNoteDurations[curTrack] >= curNoteLength) {
+                turn_off();
+                lastNote = 0;
                 trackNoteDurations[curTrack] -= curNoteLength;
                 curTrackIndexes[curTrack] += 1;
             }
@@ -109,7 +128,7 @@ songInterrupt:
                 if (curNote == 0) {
                     turn_off();
                 } else {
-                    play_note(SystemCoreClock / curNote);
+                    play_note(curNote);
                 }
             }
 
@@ -117,12 +136,17 @@ songInterrupt:
             curProgress += SWITCHING_INTERVAL;
             if (curProgress >= progressUpdateInterval) {
                 lcd_draw_progress(0, 1);
-                curProgress = 0;
+                curProgress -= progressUpdateInterval;
             }
-            trackNoteDurations[curTrack] += curSong.tracks * SWITCHING_INTERVAL;
 
-            // Move to next track for next loop
-            curTrack = (curTrack + 1) % curSong.tracks;
+
+            // Move to next track for next loop if rotate mode
+            if (trackSel > curSong.tracks) {
+                curTrack = (curTrack + 1) % curSong.tracks;
+                trackNoteDurations[curTrack] += curSong.tracks * SWITCHING_INTERVAL;
+            } else {
+                trackNoteDurations[curTrack] += SWITCHING_INTERVAL;
+            }
             lastNote = curNote;
 
             // Let note play. If new command comes in, stop and run next

@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 /* RTOS header files */
 #include <FreeRTOS.h>
@@ -16,7 +17,9 @@
 #include <outputs/include/music_enums.h>
 #include <outputs/include/songs.h>
 
-#define SWITCHING_INTERVAL 10
+#define SWITCHING_INTERVAL 7
+#define TRACK_OFFSET 8
+
 
 extern QueueHandle_t Queue_Sound;
 
