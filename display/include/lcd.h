@@ -30,9 +30,9 @@ extern volatile int trackNum;
 
 // Music Printout Constants
 #define TITLE_HORIZ_COORD 20        // Where to center title content
-#define AUTHOR_HORIZ_COORD 45       // Where to center author content
-#define TRACK_HORIZ_COORD 70        // Where to center track content
-#define PBAR_HORIZ_COORD 125        // Where to center progress bar content
+#define AUTHOR_HORIZ_COORD 50       // Where to center author content
+#define TRACK_HORIZ_COORD 80        // Where to center track content
+#define PBAR_HORIZ_COORD 115        // Where to center progress bar content
 #define CENTER_THIRD_COORD 65       // Where to center text horizontally
 #define DISPLAY_TEXT_COLOR 0xFFFF   // Foreground color for text
 #define DISPLAY_BACK_COLOR 0x0000   // Background color for text

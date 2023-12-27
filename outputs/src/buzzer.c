@@ -23,13 +23,14 @@ void initialize_buzzer(void) {
  * Ticks = 24000000 / freq
  */
 void play_note(uint32_t note_frequency) {
-    // Buzzer has large resonance spikes above 2000Hz and around 1500Hz
-    // Will attenuate for volume consistency
-    float attenuatingFactor = 1;
-    if (note_frequency > 2000) {
-        attenuatingFactor = 0.25;
-    } else if (note_frequency > 1450 && note_frequency < 1550) {
-        attenuatingFactor = 0.10;
+    // PWM output strength corrections based on buzzer acoustic properties
+    float attenuatingFactor = 0.2;
+    if (note_frequency > 2300) {
+        attenuatingFactor = 0.1;
+    } else if (note_frequency == Bb6) {
+        attenuatingFactor = 0.5;
+    } else if (note_frequency == Gb6) {
+        attenuatingFactor = 0.04;
     }
 
 
@@ -42,7 +43,7 @@ void play_note(uint32_t note_frequency) {
     TIMER_A0->CCR[0] = note_period_ticks - 1;
 
     // Duty cycle with attenuation modifier
-    TIMER_A0->CCR[4] = ((float)note_period_ticks * attenuatingFactor / 4) - 1;
+    TIMER_A0->CCR[4] = ((float)note_period_ticks * attenuatingFactor) - 1;
 
     // Reset/Set mode
     TIMER_A0->CCTL[4] = TIMER_A_CCTLN_OUTMOD_7;
