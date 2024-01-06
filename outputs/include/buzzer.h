@@ -22,6 +22,7 @@
 
 
 extern QueueHandle_t Queue_Sound;
+extern volatile bool masterPlayer;
 
 /**
  * Initializes buzzer

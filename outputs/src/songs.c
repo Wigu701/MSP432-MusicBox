@@ -26,7 +26,7 @@ uint8_t FGM1_Times[139] = {H, H, 72, Q, Q, Q, Q, Q, Q, Q, H, Q, Q, Q, Q, Q, E, E
 
 uint16_t FGM2_Notes[74] = {0, 0, 0, 0, G5, D6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, D5, G5, D5, A5, D5, Bb5, A5, G5, A5, D5, G5, D5, G5, A5, D5, A5, Bb5, A5, G5, A5, D5, D6, C6, Bb5, A5, G5, Bb5, A5, G5, Gb5, A5, G5, D5, G5, A5, Bb5, C6, D6, E6,
                            F6, E6, F6, G6, F5, E6, D6, F6, E6, D6, E6, F6, E6, D6, C6, E6, D6, C6, B5, G5, C6};
-uint8_t FGM2_Times[74] = {255, 255, 255, 195, H, H, 24, Q, Q, Q, Q, Q, Q, Q, H, Q, Q, Q, Q, Q, E, E, Q, Q, Q, E, E, Q, E, E, Q, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+uint8_t FGM2_Times[74] = {255, 255, 255, 195, H, H, 72, Q, Q, Q, Q, Q, Q, Q, H, Q, Q, Q, Q, Q, E, E, Q, Q, Q, E, E, Q, E, E, Q, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
                           E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, Q, Q, Q, Q, H};
 uint16_t* FGM_Notes[] = {FGM1_Notes, FGM2_Notes};
 uint8_t* FGM_Times[] = {FGM1_Times, FGM2_Times};
