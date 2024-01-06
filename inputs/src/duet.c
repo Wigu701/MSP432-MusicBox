@@ -16,10 +16,6 @@ void initialize_pins() {
     P1->SEL0 &= ~BIT0;
     P1->SEL1 &= ~BIT0;
 
-    // Pulldown resistor
-    P1->REN |= BIT0;
-    P1->OUT &= ~BIT0;
-
     // Falling edge interrupt
     P1->IES |= BIT0;
     P1->IE |= BIT0;

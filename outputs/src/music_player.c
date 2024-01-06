@@ -37,8 +37,10 @@ void Task_musicPlayer(void *pvParameters) {
             titleString = songs[curSong].title;
             authorString = songs[curSong].author;
         } else {
+            if (masterPlayer && command.action == DUET) continue;
             if (command.direction == UP) {
                 int playCommand = curSong | (trackNum << TRACK_OFFSET);
+                if (command.action == CLICK) masterPlayer = true;
                 xQueueSendToBack(Queue_Sound, &playCommand, portMAX_DELAY);
             } else {
                 xQueueSendToBack(Queue_Sound, &stopCommand, portMAX_DELAY);
