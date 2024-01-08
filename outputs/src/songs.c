@@ -116,21 +116,36 @@ uint8_t* SB_Times[1] = {SB1_Times};
 
 
 // Emerald Hill Zone
-uint16_t EHZ_Length[] = {88, 160};
-uint16_t EHZ1_Notes[88] =  {F5, G5, E5, F5,
+uint16_t EHZ_Length[] = {251, 160};
+uint16_t EHZ1_Notes[251] =  {F5, G5, E5, F5,
+							0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6, C6, D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
+							0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6    , D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
+							0, G5, G5, A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
+							0, G5    , A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
+							C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, 0, B5, C6, D6, C6, B5, D6, C6, C6, A5, E5,
+							C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, D6, E6, A5,
                             0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6, C6, D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
                             0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6    , D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
                             0, G5, G5, A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
                             0, G5    , A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
-
+                            C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, 0, B5, C6, D6, C6, B5, D6, C6, C6, A5, E5,
+                            C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, D6, E6,
                             };
 
-uint8_t EHZ1_Times[88] =   {DE, 78/*S+DH*/, H, H,
-                            E, E, E, E, E, E, S, DE, E, Q, E, S, E, 30, 30, S, S, S, E, E, S, E, 102,
-                            E, E, E, E, E, E, S, DE, E, Q, DE,   E, 30, 30, S, S, S, E, E, S, E, 102,
-                            E, E, E, E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
-                            E, Q   , E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
-
+uint8_t EHZ1_Times[251] =   {DE, 78, H, H,
+							E, E, E, E, E, E, S, DE, E, Q, E, S, E, 30, 30, S, S, S, E, E, S, E, 102,
+							E, E, E, E, E, E, S, DE, E, Q, E, DE,   30, 30, S, S, S, E, E, S, E, 102,
+							E, E, E, E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
+							E, Q   , E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
+							DQ, E, Q,  E, E, E, S, S, Q, E, S, S, Q, Q, E, E, E, E, E, E, E, Q, E, H,
+							DQ, E, 30, S, E, E, S, S, Q, E, S, S, Q, DE, 78, W,
+							
+							E, E, E, E, E, E, S, DE, E, Q, E, S, E, 30, 30, S, S, S, E, E, S, E, 102,
+							E, E, E, E, E, E, S, DE, E, Q, E, DE,   30, 30, S, S, S, E, E, S, E, 102,
+							E, E, E, E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
+							E, Q   , E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
+							DQ, E, Q,  E, E, E, S, S, Q, E, S, S, Q, Q, E, E, E, E, E, E, E, Q, E, H,
+							DQ, E, 30, S, E, E, S, S, Q, E, S, S, Q, DE, 78+96,
                             };
 
 uint16_t EHZ2_Notes[160] = {0, 0, 0, 0,
@@ -262,7 +277,7 @@ Song_Data songs[TOTAL_SONGS] = {
          .notes = (uint16_t**)EHZ_Notes,
          .durations = (uint8_t**)EHZ_Times,
          .length = EHZ_Length,
-         .tempo = 130,
+         .tempo = 136,
          .tracks = 2
     },
     {
