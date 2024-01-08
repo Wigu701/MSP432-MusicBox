@@ -115,6 +115,43 @@ uint16_t* SB_Notes[1] = {SB1_Notes};
 uint8_t* SB_Times[1] = {SB1_Times};
 
 
+// Emerald Hill Zone
+uint16_t EHZ_Length[] = {88, 160};
+uint16_t EHZ1_Notes[88] =  {F5, G5, E5, F5,
+                            0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6, C6, D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
+                            0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6    , D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
+                            0, G5, G5, A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
+                            0, G5    , A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
+
+                            };
+
+uint8_t EHZ1_Times[88] =   {DE, 78/*S+DH*/, H, H,
+                            E, E, E, E, E, E, S, DE, E, Q, E, S, E, 30, 30, S, S, S, E, E, S, E, 102,
+                            E, E, E, E, E, E, S, DE, E, Q, DE,   E, 30, 30, S, S, S, E, E, S, E, 102,
+                            E, E, E, E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
+                            E, Q   , E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
+
+                            };
+
+uint16_t EHZ2_Notes[160] = {0, 0, 0, 0,
+                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
+                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5};
+
+uint8_t EHZ2_Times[160] = {W, W, W, W,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
+                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E};
+uint16_t* EHZ_Notes[2] = {EHZ1_Notes, EHZ2_Notes};
+uint8_t* EHZ_Times[2] = {EHZ1_Times, EHZ2_Times};
+
+
 // Duck Tales Moon Song
 uint16_t DT_Length[] = {118, 240};
 uint16_t DT1_Notes[118] = {Gb5, Db6, Gb6, Ab6, Db6, Gb6, Ab6, Db6, B6, Db6, B6, Bb6, Db6, Bb6, Ab6, Gb6,
@@ -153,7 +190,6 @@ uint8_t DT2_Times[240] = {E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
 
 uint16_t* DT_Notes[2] = {DT1_Notes, DT2_Notes};
 uint8_t* DT_Times[2] = {DT1_Times, DT2_Times};
-
 
 // Conslidated array
 Song_Data songs[TOTAL_SONGS] = {
@@ -219,6 +255,15 @@ Song_Data songs[TOTAL_SONGS] = {
          .length = SB_Length,
          .tempo = 120,
          .tracks = 1
+    },
+    {
+         .title = "8: Emerald Hill Zone",
+         .author = "Masato Nakamura",
+         .notes = (uint16_t**)EHZ_Notes,
+         .durations = (uint8_t**)EHZ_Times,
+         .length = EHZ_Length,
+         .tempo = 130,
+         .tracks = 2
     },
     {
          .title = "9. Duck Tales Moon Theme",

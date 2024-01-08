@@ -3,7 +3,7 @@
 
 #include <outputs/include/music_enums.h>
 
-#define TOTAL_SONGS 8
+#define TOTAL_SONGS 9
 
 /**
  * 1 - Mario Death
@@ -12,7 +12,8 @@
  * 4 - Brody Quest
  * 5 - LoZ
  * 6 - Megalovania
- * 7 - Spongebob
+ * 7 - Spongbob
+ * 8 - Emerald Hill Zone
  * 9 - Duck Tales Moon Theme
  */
 extern Song_Data songs[TOTAL_SONGS];
