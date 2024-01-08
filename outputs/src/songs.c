@@ -116,8 +116,9 @@ uint8_t* SB_Times[1] = {SB1_Times};
 
 
 // Emerald Hill Zone
-uint16_t EHZ_Length[] = {251, 160};
+uint16_t EHZ_Length[] = {251, 353};
 uint16_t EHZ1_Notes[251] =  {F5, G5, E5, F5,
+
 							0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6, C6, D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
 							0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6    , D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
 							0, G5, G5, A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
@@ -133,6 +134,7 @@ uint16_t EHZ1_Notes[251] =  {F5, G5, E5, F5,
                             };
 
 uint8_t EHZ1_Times[251] =   {DE, 78, H, H,
+
 							E, E, E, E, E, E, S, DE, E, Q, E, S, E, 30, 30, S, S, S, E, E, S, E, 102,
 							E, E, E, E, E, E, S, DE, E, Q, E, DE,   30, 30, S, S, S, E, E, S, E, 102,
 							E, E, E, E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
@@ -148,21 +150,41 @@ uint8_t EHZ1_Times[251] =   {DE, 78, H, H,
 							DQ, E, 30, S, E, E, S, S, Q, E, S, S, Q, DE, 78+96,
                             };
 
-uint16_t EHZ2_Notes[160] = {0, 0, 0, 0,
-                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
-                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5,
-                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
-                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5,
-                             D5, D5, D5, D5, 0, D5, 0, D5, 0, D5, D5, D5, D5, C5, C5, C5, C5, 0, C5, 0, C5, 0, C5, C5, C5, C5,
-                             B4, B4, B4, B4, 0, B4, 0, B4, 0, B4, B4, B4, B4, Bb4, Bb4, Bb4, Bb4, 0, C5, 0, C5, 0, C5, C5, C5, C5};
+uint16_t EHZ2_Notes[353] = {0, B6, G6, E6, C6, G6, E6, C6, A5, G6, E6, C6, A5, G6, E6, C6, A5, A6, F6, D6, Bb5, A6, F6, D6, Bb5, 
 
-uint8_t EHZ2_Times[160] = {W, W, W, W,
-                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
-                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
-                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
-                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
-                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E,
-                            E, E, S, S, S, S, S, S, S, S, S, S, E, E, E, S, S, S, S, S, S, S, S, S, S, E};
+							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+							0, 0, 0, 0,
+							0, 0, 0, 0,
+
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            };
+
+uint8_t  EHZ2_Times[353] = {H, S, S, S, S, S, S, S, S,    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
+
+							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+							W, W, W, W,
+							W, W, W, W,
+
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            W, W, W, W,
+                            W, W, W, W,
+							};
+							
+							
 uint16_t* EHZ_Notes[2] = {EHZ1_Notes, EHZ2_Notes};
 uint8_t* EHZ_Times[2] = {EHZ1_Times, EHZ2_Times};
 
