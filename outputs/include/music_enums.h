@@ -16,6 +16,7 @@
 #define S 6         // Sixteenth
 
 // Notes
+#define A4 440
 #define Bb4 466
 #define B4 494
 #define C5 523
@@ -47,8 +48,11 @@
 #define D7 2349
 #define Eb7 2490
 #define E7 2637
+#define Gb7 2960
+#define Ab7 3322
+#define Db8 4435
 
-#define MAX_TRACKS 3
+#define MAX_TRACKS 2
 
 // Format for all songs
 typedef struct Song_Data {

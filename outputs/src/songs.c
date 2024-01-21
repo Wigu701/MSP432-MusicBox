@@ -100,6 +100,8 @@ uint8_t Mega2_Times[160] = {W, W, W, W,
 uint16_t* Mega_Notes[2] = {Mega1_Notes, Mega2_Notes};
 uint8_t* Mega_Times[2] = {Mega1_Times, Mega2_Times};
 
+
+// Spongebob Theme
 uint16_t SB_Length[] = {116};
 uint16_t SB1_Notes[116] = {Eb6, D6, D6, E6, D6, B5, G5, B5, D6, E6, D6, B5, D6, 0, D6, 0, D6, 0, D6, G6, G6, A6, G6, E6, C6, E6, G6, A6, G6, E6, E6, 0, E6, 0, E6, 0, E6,
                           D6, D6, E6, D6, B5, G5, B5, D6, E6, D6, B5, D6, 0, D6, 0, D6, 0, D6, G6, G6, A6, G6, E6, C6, E6, G6, A6, G6, E6, E6, 0, E6, 0, E6, 0, E6, 0,
@@ -111,6 +113,46 @@ uint8_t SB1_Times[116] = {H + E, E, ET, ET, ET, ET, ET, ET, ET, ET, ET, Q, E, E,
                          E, E, S, S, E, E, E, E, ET, ET, ET, 2*ET, ET, Q, Q, ET, ET, ET, ET, ET, ET, ET, ET, ET, ET, E};
 uint16_t* SB_Notes[1] = {SB1_Notes};
 uint8_t* SB_Times[1] = {SB1_Times};
+
+
+// Duck Tales Moon Song
+uint16_t DT_Length[] = {118, 240};
+uint16_t DT1_Notes[118] = {Gb5, Db6, Gb6, Ab6, Db6, Gb6, Ab6, Db6, B6, Db6, B6, Bb6, Db6, Bb6, Ab6, Gb6,
+                           Db6, Gb6, Ab6, B6, B6, Bb6, Bb6, Ab6, Gb6, Db7, Gb6, Gb7, Ab7, Gb7, Db8,
+                           0, Bb5, B5, Db6, Db6, Gb6, F6, Gb6, Ab6, Bb6, Gb6, F6, Gb6, Db7, Gb6, Gb6, Gb6, Gb6, Gb6, Ab6, Gb6, F6,
+                           Bb5, Ab5, Gb5, Db6, Gb6, Ab6, B6, Bb6, Bb6, Db7, B6, Bb6, B6, Bb6, Gb6, Db6, Ab6, Gb6, F6, Eb6, F6, Gb6, Gb6, Gb6,
+                           0, Gb6, Gb6, 0, Ab6, Ab6, 0, E6, Db6, E6, B5, Db6, B5, A5, B5, B5, A5, B5, 0, A5, 0, Db6,
+                           Gb6, Gb6, 0, Ab6, Ab6, 0, A6, E6, E6, E6, A6, B6, A6, Db7, Db7, Db7, Db7, 0, Gb6};
+
+uint8_t DT1_Times[118] = {E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          W + Q, Q, Q, Q, DQ, E, W, Q, Q, DH, DH, 2*W + E, Q, E, 2*W,
+                          H, E, E, E, DQ, Q, Q, Q, Q, E, W + DQ, E, E, DQ, E, W + Q, E, E, H + E, E, E, W + E,
+                          H + E, E, E, H + E, Q, Q, DQ, E, W, Q, Q, E, E, E, Q, H, E, E, E, E, DQ, DQ, DQ, Q,
+                          W, E, E, Q, E, E, E, H, Q, E, 3, 3, S, E, E, E, E, E, E, E, E, W + E,
+                          E, E, Q, E, E, E, Q, Q, Q, E, E, DH + E, E, DH, E, E, E + W + H, H, W};
+
+uint16_t DT2_Notes[240] = {Gb5, Db6, Gb6, Ab6, Db6, Gb6, Ab6, Db6, B6, Db6, B6, Bb6, Db6, Bb6, Ab6, Gb6,
+                           Gb5, Db6, Gb6, E5, B5, E6, Db5, Bb5, Eb6, D5, A5, D6, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5,
+                           Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, F5, F5, F5, F5, F5, F5, F5, F5, Eb5, Eb5, Eb5, Eb5, Eb5, Eb5, Eb5, Eb5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5,
+                           B4, B4, B4, B4, B4, B4, B4, B4, C5, C5, C5, C5, C5, C5, C5, C5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5,
+                           Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, Gb5, E5, E5, E5, E5, E5, E5, E5, E5, Eb5, Eb5, Eb5, Eb5, Eb5, Eb5, Eb5, Eb5, D5, D5, D5, D5, D5, D5, D5, D5,
+                           Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5, B4, B4, B4, B4, Db5, Db5, Db5, Db5, D5, E5, Gb5, Gb6, Db6, B5, Bb5, Gb5, Db5, B4, Bb4,
+                           B4, B4, 0, E5, E5, 0, A4, A4, A4, A4, A4, A4, A4, A4, B4, B4, B4, B4, B4, B4, B4, B4, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5,
+                           B4, B4, 0, E5, E5, 0, A4, A4, A4, A4, A4, A4, A4, A4, B4, B4, B4, B4, B4, B4, B4, B4, Db5, Db5, Db5, Db5, Db5, Db5, Db5, Db5,
+                           D5, D5, D5, D5, D5, D5, D5, D5, D5, 0, D5, E5, Gb5};
+
+uint8_t DT2_Times[240] = {E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          DQ, DQ, W + Q, DQ, DQ, W + Q, DQ, DQ, W + Q, DQ, DQ, W + Q, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, DQ, DQ, Q, E, E, E, E, E, E, E, E,
+                          E, E, Q, E, E, E, Q, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          E, E, Q, E, E, E, Q, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E,
+                          E, E, E, E, E, E, E, E, E, DQ, Q, Q, W};
+
+uint16_t* DT_Notes[2] = {DT1_Notes, DT2_Notes};
+uint8_t* DT_Times[2] = {DT1_Times, DT2_Times};
 
 
 // Conslidated array
@@ -177,5 +219,14 @@ Song_Data songs[TOTAL_SONGS] = {
          .length = SB_Length,
          .tempo = 120,
          .tracks = 1
+    },
+    {
+         .title = "9. Duck Tales Moon Theme",
+         .author = "Hiroshige Tonomura",
+         .notes = (uint16_t**)DT_Notes,
+         .durations = (uint8_t**)DT_Times,
+         .length = DT_Length,
+         .tempo = 200,
+         .tracks = 2
     }
 };

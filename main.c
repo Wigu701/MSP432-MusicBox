@@ -51,7 +51,7 @@ int main(void)
         "Draw song title on lcd",
         configMINIMAL_STACK_SIZE,
         NULL,
-        3,
+        5,
         &Task_Title_Handle
     );
 
@@ -60,7 +60,7 @@ int main(void)
         "Draw song author on lcd",
         configMINIMAL_STACK_SIZE,
         NULL,
-        3,
+        5,
         &Task_Author_Handle
     );
 
@@ -69,7 +69,7 @@ int main(void)
         "Draw track on lcd",
         configMINIMAL_STACK_SIZE,
         NULL,
-        3,
+        5,
         &Task_Track_Handle
     );
 
@@ -78,7 +78,7 @@ int main(void)
         "Buttons detect",
         configMINIMAL_STACK_SIZE,
         NULL,
-        2,
+        4,
         &Task_Buttons_Handle
     );
 
@@ -87,7 +87,7 @@ int main(void)
         "Trigger ADC reading",
         configMINIMAL_STACK_SIZE,
         NULL,
-        2,
+        3,
         &Task_pollADC_Handle
     );
 
@@ -96,7 +96,7 @@ int main(void)
         "Handle ADC reading",
         configMINIMAL_STACK_SIZE,
         NULL,
-        3,
+        4,
         &Task_ADC_Handle
     );
 
@@ -105,7 +105,7 @@ int main(void)
         "Duet signals",
         configMINIMAL_STACK_SIZE,
         NULL,
-        2,
+        3,
         &Task_Duet_Handle
     );
 
@@ -115,7 +115,7 @@ int main(void)
         "Music player",
         configMINIMAL_STACK_SIZE,
         NULL,
-        1,
+        2,
         NULL
     );
 
