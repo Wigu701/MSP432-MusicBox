@@ -17,7 +17,7 @@
 #include <outputs/include/music_enums.h>
 #include <outputs/include/songs.h>
 
-#define SWITCHING_INTERVAL 7
+#define SWITCHING_INTERVAL 1
 #define TRACK_OFFSET 8
 
 

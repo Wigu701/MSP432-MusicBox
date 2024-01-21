@@ -26,7 +26,7 @@ void initialize_pins() {
 
     // Turn on interrupt handler
     NVIC_EnableIRQ(PORT1_IRQn);
-    NVIC_SetPriority(PORT1_IRQn, 1);
+    NVIC_SetPriority(PORT1_IRQn, 2);
 
 
     // Configure output on P2.0
