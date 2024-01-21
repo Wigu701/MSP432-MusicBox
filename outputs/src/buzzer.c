@@ -26,10 +26,8 @@ void initialize_buzzer(void) {
 void play_note(uint32_t note_frequency) {
     // PWM output strength corrections based on buzzer acoustic properties
     float attenuatingFactor = 0.2;
-    if (note_frequency > 2300 || note_frequency == D6 || note_frequency == C6) {
+    if (note_frequency >= Db7 || note_frequency == D6 || note_frequency == C6) {
         attenuatingFactor = 0.1;
-    } else if (note_frequency == Bb6 || note_frequency == B6) {
-        attenuatingFactor = 0.4;
     } else if (note_frequency == Gb6 || note_frequency == Db6) {
         attenuatingFactor = 0.04;
     }

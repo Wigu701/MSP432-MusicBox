@@ -13,6 +13,7 @@ void Task_musicPlayer(void *pvParameters) {
     trackNum = 1;
 
     while (1) {
+        xQueueReset(Queue_MusicPlayer_Driver);
         xQueueReceive(Queue_MusicPlayer_Driver, &command, portMAX_DELAY);
 
         // Based on command type

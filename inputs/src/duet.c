@@ -16,19 +16,26 @@ void initialize_pins() {
     P1->SEL0 &= ~BIT0;
     P1->SEL1 &= ~BIT0;
 
-    // Falling edge interrupt
-    P1->IES |= BIT0;
+    // Pulldown resistor
+    P1->OUT &= ~BIT0;
+    P1->REN |= BIT0;
+
+    // Rising edge interrupt
+    P1->IES &= ~BIT0;
     P1->IE |= BIT0;
 
     // Turn on interrupt handler
     NVIC_EnableIRQ(PORT1_IRQn);
-    NVIC_SetPriority(PORT1_IRQn, 2);
+    NVIC_SetPriority(PORT1_IRQn, 1);
 
 
     // Configure output on P2.0
     P2->DIR |= BIT0;
     P2->SEL0 &= ~BIT0;
     P2->SEL1 &= ~BIT0;
+
+    // Set P2.0 output zero
+    P2->OUT &= ~BIT0;
 }
 
 
@@ -60,13 +67,14 @@ void Task_duet(void *pvParameters) {
     while(1)
     {
         msg.direction = UP;
-        while ((P1->IN & BIT0) == 0) vTaskDelay(pdMS_TO_TICKS(1));
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         xQueueSendToBack(Queue_MusicPlayer_Driver, &msg, portMAX_DELAY);
 
         // Wait for interrupt on falling edge
         msg.direction = DOWN;
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        while ((P1->IN & BIT0) == 1) vTaskDelay(pdMS_TO_TICKS(1));
         xQueueSendToBack(Queue_MusicPlayer_Driver, &msg, portMAX_DELAY);
+
     }
 }
 

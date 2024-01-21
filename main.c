@@ -78,7 +78,7 @@ int main(void)
         "Buttons detect",
         configMINIMAL_STACK_SIZE,
         NULL,
-        1,
+        2,
         &Task_Buttons_Handle
     );
 
@@ -87,7 +87,7 @@ int main(void)
         "Trigger ADC reading",
         configMINIMAL_STACK_SIZE,
         NULL,
-        1,
+        2,
         &Task_pollADC_Handle
     );
 
