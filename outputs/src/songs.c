@@ -119,72 +119,83 @@ uint8_t* SB_Times[1] = {SB1_Times};
 uint16_t EHZ_Length[] = {251, 353};
 uint16_t EHZ1_Notes[251] =  {F5, G5, E5, F5,
 
-							0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6, C6, D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
-							0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6    , D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
-							0, G5, G5, A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
-							0, G5    , A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
-							C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, 0, B5, C6, D6, C6, B5, D6, C6, C6, A5, E5,
-							C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, D6, E6, A5,
+                            0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6, C6, D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
+                            0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6    , D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
+                            0, G5, G5, A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
+                            0, G5    , A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
+                            C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, 0, B5, C6, D6, C6, B5, D6, C6, C6, A5, E5,
+                            C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, D6, E6, A5,
+
+                            // REPEAT
+
                             0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6, C6, D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
                             0, G5, A5, G5, C6, C6, D6, E6, 0, D6, A5, C6    , D6, 0, Bb5, C6, Bb5, D6, C6, Bb5, C6, A5,
                             0, G5, G5, A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
                             0, G5    , A5, C6, C6, D6, C6, E6, D6, A5, 0, Bb5, Bb5, C6, D6, C6, Bb5, C6, A5,
                             C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, 0, B5, C6, D6, C6, B5, D6, C6, C6, A5, E5,
                             C6, A5, G5, A5, C6, B5, C6, B5, 0, B5, C6, B5, 0, D6, E6,
+
                             };
 
 uint8_t EHZ1_Times[251] =   {DE, 78, H, H,
 
-							E, E, E, E, E, E, S, DE, E, Q, E, S, E, 30, 30, S, S, S, E, E, S, E, 102,
-							E, E, E, E, E, E, S, DE, E, Q, E, DE,   30, 30, S, S, S, E, E, S, E, 102,
-							E, E, E, E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
-							E, Q   , E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
-							DQ, E, Q,  E, E, E, S, S, Q, E, S, S, Q, Q, E, E, E, E, E, E, E, Q, E, H,
-							DQ, E, 30, S, E, E, S, S, Q, E, S, S, Q, DE, 78, W,
-							
-							E, E, E, E, E, E, S, DE, E, Q, E, S, E, 30, 30, S, S, S, E, E, S, E, 102,
-							E, E, E, E, E, E, S, DE, E, Q, E, DE,   30, 30, S, S, S, E, E, S, E, 102,
-							E, E, E, E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
-							E, Q   , E, E, E, E, E, E, Q, 60, E, E, E, E, E, E, S, DE, W,
-							DQ, E, Q,  E, E, E, S, S, Q, E, S, S, Q, Q, E, E, E, E, E, E, E, Q, E, H,
-							DQ, E, 30, S, E, E, S, S, Q, E, S, S, Q, DE, 78+96,
+                            E, E, E, E, E, E, S, DE,     E, Q, E, S, E, 30,         30, S, S, S, E, E, S, E,     102,
+                            E, E, E, E, E, E, S, DE,     E, Q, E, DE,   30,         30, S, S, S, E, E, S, E,     102,
+                            E, E, E, E, E, E, E, E,      E, Q, 60,                  E, E, E, E, E, E, S, DE,     W,
+                            E, Q   , E, E, E, E, E,      E, Q, 60,                  E, E, E, E, E, E, S, DE,     W,
+                            DQ, E, Q,  E, E,             E, S, S, Q, E, S, S, Q,    Q, E, E, E, E, E, E,         E, Q, E, H,
+                            DQ, E, 30, S, E,             E, S, S, Q, E, S, S, Q,    DE, 78,                      W,
+                            
+                            // REPEAT
+
+                            E, E, E, E, E, E, S, DE,     E, Q, E, S, E, 30,         30, S, S, S, E, E, S, E,     102,
+                            E, E, E, E, E, E, S, DE,     E, Q, E, DE,   30,         30, S, S, S, E, E, S, E,     102,
+                            E, E, E, E, E, E, E, E,      E, Q, 60,                  E, E, E, E, E, E, S, DE,     W,
+                            E, Q   , E, E, E, E, E,      E, Q, 60,                  E, E, E, E, E, E, S, DE,     W,
+                            DQ, E, Q,  E, E,             E, S, S, Q, E, S, S, Q,    Q, E, E, E, E, E, E,         E, Q, E, H,
+                            DQ, E, 30, S, E,             E, S, S, Q, E, S, S, Q,    DE, 78+96,
+
                             };
 
-uint16_t EHZ2_Notes[353] = {0, B6, G6, E6, C6, G6, E6, C6, A5, G6, E6, C6, A5, G6, E6, C6, A5, A6, F6, D6, Bb5, A6, F6, D6, Bb5, 
-
-							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
-							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
-							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
-							C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
-							0, 0, 0, 0,
-							0, 0, 0, 0,
+uint16_t EHZ2_Notes[455] = {0, B6, G6, E6, C6, G6, E6, C6, A5, G6, E6, C6, A5, G6, E6, C6, A5, A6, F6, D6, Bb5, A6, F6, D6, Bb5, 
 
                             C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
                             C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
                             C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
                             C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
-                            0, 0, 0, 0,
-                            0, 0, 0, 0,
+                            F5, F6, C5, C6, F5, F6, C5, C6,         E5, E6, B4, B5, E5, E6, B4, B5,        E5, E6, B4, B5, Ab4, Ab5, E4, E5,           A4, A5, B4, B5, C5, C6, A4, A5,
+                            F5, F6, C5, C6, F5, F6, C5, C6,         E5, E6, B4, B5, E5, E6, B4, B5,        G5, G5, A5,                                 C7, G6, E6, C6,   G6, E6, C6, G5,   E6, C6, G5, E5,   C6, G5, E5, C5,
+
+                            // REPEAT
+
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            C5, C6, C6, A5, D6, C6, G5, A5, C6,     D5, D6, D6, A5, E6, D6, A5, B5, D6,    Bb4, Bb5, Bb5, F5, C6, Bb5, F5, G5, Bb5,    A4, A5, A4, B4, B5, B4, C5, C6, C5, A4, A5, A4,
+                            F5, F6, C5, C6, F5, F6, C5, C6,         E5, E6, B4, B5, E5, E6, B4, B5,        E5, E6, B4, B5, Ab4, Ab5, E4, E5,           A4, A5, B4, B5, C5, C6, A4, A5,
+                            F5, F6, C5, C6, F5, F6, C5, C6,         E5, E6, B4, B5, E5, E6, B4, B5,        G5, G5, A5,
                             };
 
-uint8_t  EHZ2_Times[353] = {H, S, S, S, S, S, S, S, S,    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
-
-							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
-							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
-							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
-							E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
-							W, W, W, W,
-							W, W, W, W,
+uint8_t  EHZ2_Times[455] = {H, S, S, S, S, S, S, S, S,    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
 
                             E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
                             E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
                             E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
                             E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
-                            W, W, W, W,
-                            W, W, W, W,
-							};
-							
-							
+                            E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,
+                            E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,       S, E, 78,                     S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S,
+
+                            // REPEAT
+
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, E, E, E, DE, E, S, S, S,   E, S, S, E, S, S, E, S, S, E, S, S,
+                            E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,
+                            E, E, E, E, E, E, E, E,       E, E, E, E, E, E, E, E,       S, E, 78+96,
+                            };
+                            
+                            
 uint16_t* EHZ_Notes[2] = {EHZ1_Notes, EHZ2_Notes};
 uint8_t* EHZ_Times[2] = {EHZ1_Times, EHZ2_Times};
 
