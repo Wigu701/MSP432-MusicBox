@@ -4,53 +4,65 @@
 #include <stdint.h>
 
 // Note durations
-#define W 96        // Whole
-#define DH 72       // Dotted half
-#define H 48        // Half
-#define DQ 36       // Dotted quarter
-#define Q 24        // Quarter
-#define DE 18       // Dotted eighth
-#define T 16        // Triplet
-#define E 12        // Eighth
-#define ET 8        // Eighth triplet
-#define S 6         // Sixteenth
+#define W   96        // Whole
+#define DH  72       // Dotted half
+#define H   48        // Half
+#define DQ  36       // Dotted quarter
+#define Q   24        // Quarter
+#define DE  18       // Dotted eighth
+#define T   16        // Triplet
+#define E   12        // Eighth
+#define ET  8        // Eighth triplet
+#define S   6         // Sixteenth
 
-// Notes
-#define A4 440
-#define Bb4 466
-#define B4 494
-#define C5 523
-#define Db5 554
-#define D5 587
-#define Eb5 622
-#define E5 659
-#define F5 698
-#define Gb5 740
-#define G5 784
-#define Ab5 831
-#define A5 880
-#define Bb5 932
-#define B5 988
-#define C6 1047
-#define Db6 1109
-#define D6 1175
-#define Eb6 1245
-#define E6 1319
-#define F6 1397
-#define Gb6 1480
-#define G6 1568
-#define Ab6 1662
-#define A6 1760
-#define Bb6 1865
-#define B6 1976
-#define C7 2093
-#define Db7 2218
-#define D7 2349
-#define Eb7 2490
-#define E7 2637
-#define Gb7 2960
-#define Ab7 3322
-#define Db8 4435
+/////////////
+// NOTES
+//////////
+#define C4      261
+#define Db4     277
+#define D4      293
+#define Eb4     311
+#define E4      329
+#define F4      349
+#define Gb4     370
+#define G4      392
+#define Ab4     415
+// Using the lower notes (above this comment) is not necessarily recommended
+#define A4      440
+#define Bb4     466
+#define B4      494
+#define C5      523
+#define Db5     554
+#define D5      587
+#define Eb5     622
+#define E5      659
+#define F5      698
+#define Gb5     740
+#define G5      784
+#define Ab5     831
+#define A5      880
+#define Bb5     932
+#define B5      988
+#define C6      1047
+#define Db6     1109
+#define D6      1175
+#define Eb6     1245
+#define E6      1319
+#define F6      1397
+#define Gb6     1480
+#define G6      1568
+#define Ab6     1662
+#define A6      1760
+#define Bb6     1865
+#define B6      1976
+#define C7      2093
+#define Db7     2218
+#define D7      2349
+#define Eb7     2490
+#define E7      2637
+#define Gb7     2960
+#define Ab7     3322
+#define Db8     4435
 
 #define MAX_TRACKS 2
 
